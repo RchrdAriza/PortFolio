@@ -65,3 +65,11 @@
                 setTimeout(typeWriter, 500);
             }
         });
+
+        // Responsive navigation
+        const navToggle = document.querySelector('.nav-toggle');
+        const nav = document.querySelector('nav');
+
+        navToggle.addEventListener('click', () => {
+            nav.classList.toggle('nav-open');
+        });

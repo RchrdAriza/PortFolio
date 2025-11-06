@@ -39,6 +39,55 @@ nav {
   z-index: 100;
 }
 
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 1rem;
+}
+
+.hamburger {
+  display: block;
+  position: relative;
+  width: 24px;
+  height: 2px;
+  background: var(--portfolio-text);
+  transition: transform 0.3s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--portfolio-text);
+  transition: transform 0.3s ease, top 0.3s ease;
+}
+
+.hamburger::before {
+  top: -8px;
+}
+
+.hamburger::after {
+  top: 8px;
+}
+
+.nav-open .hamburger {
+  transform: rotate(45deg);
+}
+
+.nav-open .hamburger::before {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+.nav-open .hamburger::after {
+  top: 0;
+}
+
 .nav-brand {
   padding: 1rem 1.5rem;
   font-weight: 600;
@@ -515,13 +564,45 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+    margin-left: auto;
+    order: 2;
+  }
+
+  .nav-contact {
+    display: none;
+  }
+
   .nav-links {
-    flex-wrap: wrap;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--portfolio-bg);
+    flex-direction: column;
+    align-items: center;
+    border-top: 1px solid var(--portfolio-border);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+  }
+
+  .nav-open .nav-links {
+    max-height: 500px; /* Adjust as needed */
   }
   
   .nav-links a {
-    padding: 0.75rem 1rem;
-    font-size: 0.9rem;
+    padding: 1rem;
+    font-size: 1rem;
+    border-right: none;
+    border-bottom: 1px solid var(--portfolio-border);
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-links li {
+    width: 100%;
   }
   
   .hello-content h1 {
