@@ -1,15 +1,36 @@
-// Load pages dynamically
-async function loadPages() {
-    const main = document.querySelector('main');
-    const pages = ['hello', 'about', 'projects', 'contact'];
+
+function toggleSidebar(header) {
+    const icon = header.querySelector('.icon');
+    const items = header.nextElementSibling;
     
-    for (const page of pages) {
-        try {
-            const response = await fetch(`pages/${page}.html`);
-            const html = await response.text();
-            main.innerHTML += html;
-        } catch (error) {
-            console.error(`Error loading ${page}.html:`, error);
+    icon.classList.toggle('collapsed');
+    items.classList.toggle('collapsed');
+}
+
+// --- Lógica de Carga de Página ---
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // --- Lógica de Menú Hamburguesa (Global) ---
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('nav');
+    if (navToggle) {
+        navToggle.addEventListener('click', () => {
+            nav.classList.toggle('nav-open');
+        });
+    }
+    
+    // --- Lógica de Typewriter (se ejecuta en CUALQUIER página que la tenga) ---
+    // Esto funciona para 'hello.html' (ahora index.html) y para 'contact.html'
+    const subtitleElement = document.querySelector('.hello-page .subtitle');
+    
+    if (subtitleElement) {
+        
+        // Determina qué texto escribir basándose en el ID de la sección padre
+        let textToType = "Developer"; // Default
+        const parentSection = subtitleElement.closest('.page-content');
+        
+        if (parentSection && parentSection.id === 'contact') {
+            textToType = "Let's connect";
         }
     }
     
@@ -20,41 +41,6 @@ async function loadPages() {
     initializeEventListeners();
 }
 
-function initializeEventListeners() {
-    // Navigation functionality
-    const navLinks = document.querySelectorAll('.nav-links a');
-    const pages = document.querySelectorAll('.page-content');
-
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            
-            // Remove active class from all links and pages
-            navLinks.forEach(l => l.classList.remove('active'));
-            pages.forEach(p => p.classList.remove('active'));
-            
-            // Add active class to clicked link
-            link.classList.add('active');
-            
-            // Show corresponding page
-            const pageId = link.getAttribute('data-page');
-            document.getElementById(pageId).classList.add('active');
-        });
-    });
-
-    // Brand link navigation
-    document.querySelector('.nav-brand').addEventListener('click', (e) => {
-        e.preventDefault();
-        navLinks.forEach(l => l.classList.remove('active'));
-        pages.forEach(p => p.classList.remove('active'));
-        navLinks[0].classList.add('active');
-        document.getElementById('hello').classList.add('active');
-    });
-
-    // Typewriter effect
-    const subtitleElement = document.querySelector('.hello-page .subtitle');
-    if (subtitleElement) {
-        const textToType = "Developer";
         let charIndex = 0;
         let isDeleting = false;
 
@@ -74,29 +60,6 @@ function initializeEventListeners() {
                 setTimeout(typeWriter, 1200);
             }
         }
-
         setTimeout(typeWriter, 500);
     }
-}
-
-// Sidebar toggle functionality
-function toggleSidebar(header) {
-    const icon = header.querySelector('.icon');
-    const items = header.nextElementSibling;
-    
-    icon.classList.toggle('collapsed');
-    items.classList.toggle('collapsed');
-}
-
-// Responsive navigation
-const navToggle = document.querySelector('.nav-toggle');
-const nav = document.querySelector('nav');
-
-if (navToggle) {
-    navToggle.addEventListener('click', () => {
-        nav.classList.toggle('nav-open');
-    });
-}
-
-// Load pages when DOM is ready
-document.addEventListener('DOMContentLoaded', loadPages);
+});
