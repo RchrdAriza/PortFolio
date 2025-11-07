@@ -206,6 +206,7 @@ main {
   align-items: center;
   padding: 2rem 2rem 2rem 11rem;
   text-align: left;
+  background: url('../imgs/fondo.jpg') no-repeat center center / cover;
 }
 
 .hello-content h2 {
@@ -258,7 +259,9 @@ main {
 }
 
 .code-comment {
-  color: var(--portfolio-muted);
+  color: #8892B0;
+  font-style: italic;
+  opacity: 0.9;
 }
 
 .code-keyword {
@@ -281,6 +284,7 @@ main {
 .about-page {
   flex-direction: row;
   height: calc(100vh - 120px);
+  background-color: var(--portfolio-bg);
 }
 
 .sidebar {
@@ -288,11 +292,15 @@ main {
   background: rgba(1, 22, 39, 0.6);
   border-right: 1px solid var(--portfolio-border);
   overflow-y: auto;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
 }
 
 .sidebar-section {
-  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--portfolio-border);
+}
+
+.sidebar-section:last-child {
+  border-bottom: none;
 }
 
 .sidebar-header {
@@ -300,9 +308,11 @@ main {
   cursor: pointer;
   display: flex;
   align-items: center;
+  gap: 0.5rem;
   color: var(--portfolio-text);
   font-weight: 500;
   transition: background 0.2s;
+  border-bottom: 1px solid var(--portfolio-border);
 }
 
 .sidebar-header:hover {
@@ -310,9 +320,9 @@ main {
 }
 
 .sidebar-header .icon {
-  margin-right: 0.5rem;
   font-size: 0.75rem;
   transition: transform 0.3s;
+  flex-shrink: 0;
 }
 
 .sidebar-header .icon.collapsed {
@@ -322,7 +332,7 @@ main {
 .sidebar-items {
   max-height: 500px;
   overflow: hidden;
-  transition: max-height 0.3s ease;
+  transition: max-height 0.4s ease-in-out;
 }
 
 .sidebar-items.collapsed {
@@ -330,11 +340,12 @@ main {
 }
 
 .sidebar-item {
-  padding: 0.5rem 1rem 0.5rem 2.5rem;
-  color: var(--portfolio-muted);
+  padding: 0.5rem 1rem 0.5rem 1.5rem;
+  color: var(--portfolio-text);
   cursor: pointer;
   display: flex;
   align-items: center;
+  gap: 0.5rem;
   transition: all 0.2s;
 }
 
@@ -343,23 +354,78 @@ main {
   background: rgba(67, 217, 173, 0.05);
 }
 
-.sidebar-item .icon {
-  margin-right: 0.5rem;
-  font-size: 0.75rem;
+.sidebar-item.nested-header {
+  padding-left: 1.5rem;
 }
 
+.sidebar-item.nested-header .icon {
+  font-size: 0.75rem;
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+
+.sidebar-item.nested-header .icon.collapsed {
+  transform: rotate(-90deg);
+}
+
+.sidebar-item.final-item {
+  padding-left: 2.5rem;
+  color: var(--portfolio-muted);
+}
+
+.sidebar-item.final-item:hover {
+  color: var(--portfolio-text);
+}
+
+/* Íconos de carpeta y archivo */
+.folder-icon,
+.file-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.folder-icon.bio-color {
+  color: #E99287;
+}
+
+.folder-icon.interests-color {
+  color: var(--portfolio-accent);
+}
+
+.folder-icon.education-color {
+  color: #3A9DFF;
+}
+
+.file-icon {
+  color: var(--portfolio-muted);
+}
+
+.final-item:hover .file-icon {
+  color: var(--portfolio-text);
+}
+
+/* Items de contacto */
 .contact-item {
-  padding: 0.5rem 1rem 0.5rem 2.5rem;
+  padding: 0.5rem 1rem 0.5rem 1.5rem;
   color: var(--portfolio-muted);
   font-size: 0.9rem;
   display: flex;
   align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+}
+
+.contact-item:hover {
+  color: var(--portfolio-text);
+  background: rgba(67, 217, 173, 0.05);
 }
 
 .contact-item svg {
-  margin-right: 0.5rem;
   width: 16px;
   height: 16px;
+  color: var(--portfolio-accent);
+  flex-shrink: 0;
 }
 
 .content-area {
@@ -371,7 +437,7 @@ main {
 .line-numbers {
   display: flex;
   flex-direction: column;
-  padding: 2rem 1rem;
+  padding: 2rem 0.5rem;
   color: var(--portfolio-muted);
   font-size: 0.9rem;
   line-height: 1.8;
@@ -398,7 +464,7 @@ main {
 }
 
 .right-sidebar {
-  width: 280px;
+  width: 380px;
   background: rgba(1, 22, 39, 0.6);
   border-left: 1px solid var(--portfolio-border);
   padding: 2rem 1.5rem;
@@ -410,18 +476,57 @@ main {
   font-size: 0.9rem;
   font-weight: 400;
   margin-bottom: 1rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.sidebar-card {
+  background: var(--portfolio-card-bg);
+  border: 1px solid var(--portfolio-border);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.card-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--portfolio-border);
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--portfolio-accent);
+  color: var(--portfolio-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.username {
+  color: var(--portfolio-text);
+  font-size: 0.9rem;
+  word-break: break-word;
 }
 
 .tech-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  margin-bottom: 2rem;
 }
 
 .tech-item {
   display: flex;
   align-items: center;
+  gap: 0.5rem;
   color: var(--portfolio-muted);
   font-size: 0.9rem;
 }
@@ -431,31 +536,34 @@ main {
 }
 
 .tech-item .check {
-  margin-right: 0.5rem;
   color: var(--portfolio-accent);
+  flex-shrink: 0;
 }
 
 .tech-item .uncheck {
-  margin-right: 0.5rem;
   color: var(--portfolio-muted);
   opacity: 0.3;
+  flex-shrink: 0;
 }
 
 .languages-list {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 0.75rem;
+  padding: 0.5rem 0;
 }
 
 .language-item {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
+  gap: 0.5rem;
   color: var(--portfolio-text);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 .language-item .flag {
-  margin-right: 0.5rem;
   font-size: 1.5rem;
 }
 
@@ -463,6 +571,7 @@ main {
 .projects-page {
   flex-direction: row;
   height: calc(100vh - 120px);
+  background-color: var(--portfolio-bg); 
 }
 
 .projects-content {
@@ -694,4 +803,14 @@ footer {
     gap: 0.5rem;
     text-align: center;
   }
+}
+
+
+nav.solid-background,
+footer.solid-background {
+  /* Usamos el color de fondo de la UI pero con transparencia 
+    para mantener el efecto blur (glassmorphism) 
+  */
+  background-color: rgba(1, 22, 39, 0.8); /* 80% opacidad de --portfolio-bg */
+  backdrop-filter: blur(10px);
 }

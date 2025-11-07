@@ -20,33 +20,65 @@
             <li><a href="about.html" class="active">_about-me</a></li>
             <li><a href="projects.html" data-page="projects">_projects</a></li>
         </ul>
-        <a href="contact.htmls" class="nav-contact" data-page="contact">_contact-me</a>
+        <a href="contact.html" class="nav-contact" data-page="contact">_contact-me</a>
     </nav>
 
     <main>
         <section class="page-content about-page active" id="about">
             <div class="sidebar">
+                <!-- Personal Info Section -->
                 <div class="sidebar-section">
                     <div class="sidebar-header" onclick="toggleSidebar(this)">
                         <span class="icon">▼</span>
                         <span>personal-info</span>
                     </div>
                     <div class="sidebar-items">
-                        <div class="sidebar-item">
-                            <span class="icon">▶</span>
+                        <!-- Bio (collapsible) -->
+                        <div class="sidebar-item nested-header" onclick="toggleSidebar(this)">
+                            <span class="icon collapsed">▶</span>
+                            <svg class="folder-icon bio-color" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M10 4H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8c0-1.11-.9-2-2-2h-8l-2-2z"></path>
+                            </svg>
                             <span>bio</span>
                         </div>
-                        <div class="sidebar-item">
-                            <span class="icon">▼</span>
+                        <div class="sidebar-items collapsed"></div>
+
+                        <!-- Interests (collapsible) -->
+                        <div class="sidebar-item nested-header" onclick="toggleSidebar(this)">
+                            <span class="icon collapsed">▶</span>
+                            <svg class="folder-icon interests-color" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M10 4H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8c0-1.11-.9-2-2-2h-8l-2-2z"></path>
+                            </svg>
                             <span>interests</span>
                         </div>
-                        <div class="sidebar-item">
-                            <span class="icon">▶</span>
+                        <div class="sidebar-items collapsed"></div>
+
+                        <!-- Education (collapsible, expanded by default) -->
+                        <div class="sidebar-item nested-header" onclick="toggleSidebar(this)">
+                            <span class="icon">▼</span>
+                            <svg class="folder-icon education-color" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M10 4H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8c0-1.11-.9-2-2-2h-8l-2-2z"></path>
+                            </svg>
                             <span>education</span>
+                        </div>
+                        <div class="sidebar-items">
+                            <div class="sidebar-item final-item">
+                                <svg class="file-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"></path>
+                                </svg>
+                                <span>high-school</span>
+                            </div>
+                            <div class="sidebar-item final-item">
+                                <svg class="file-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"></path>
+                                </svg>
+                                <span>university</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
+
+                <!-- Contacts Section -->
                 <div class="sidebar-section">
                     <div class="sidebar-header" onclick="toggleSidebar(this)">
                         <span class="icon">▼</span>
@@ -58,13 +90,13 @@
                                 <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
                                 <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
                             </svg>
-                            <span>richardariza8560@gmail.com</span>
+                            <span>richardariza816@gmail.com</span>
                         </div>
                         <div class="contact-item">
                             <svg fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
                             </svg>
-                            <span>301 2039 267</span>
+                            <span>305 4819 490</span>
                         </div>
                     </div>
                 </div>
@@ -108,33 +140,50 @@
             </div>
             
             <div class="right-sidebar">
+                <!-- Programming Languages Section -->
                 <h3>// programming languages i have learned or am learning</h3>
-                <div class="tech-grid">
-                    <div class="tech-item learned"><span class="check">✓</span><span>Python</span></div>
-                    <div class="tech-item learned"><span class="check">✓</span><span>Javascript</span></div>
-                    <div class="tech-item learned"><span class="check">✓</span><span>Java</span></div>
-                    <div class="tech-item learned"><span class="check">✓</span><span>Typescript</span></div>
-                    <div class="tech-item"><span class="uncheck">○</span><span>Node</span></div>
-                    <div class="tech-item learned"><span class="check">✓</span><span>Bash script</span></div>
-                    <div class="tech-item"><span class="uncheck">○</span><span>React</span></div>
-                    <div class="tech-item learned"><span class="check">✓</span><span>Q.lua</span></div>
+                <div class="sidebar-card">
+                    <div class="card-profile">
+                        <div class="avatar">RC</div>
+                        <span class="username">@RchrdAriza</span>
+                    </div>
+                    <div class="tech-grid">
+                        <div class="tech-item learned"><span class="check">✓</span><span>Python</span></div>
+                        <div class="tech-item learned"><span class="check">✓</span><span>Javascript</span></div>
+                        <div class="tech-item learned"><span class="check">✓</span><span>Java</span></div>
+                        <div class="tech-item learned"><span class="check">✓</span><span>Typescript</span></div>
+                        <div class="tech-item"><span class="uncheck">○</span><span>Node</span></div>
+                        <div class="tech-item learned"><span class="check">✓</span><span>Bash script</span></div>
+                        <div class="tech-item"><span class="uncheck">○</span><span>React</span></div>
+                        <div class="tech-item learned"><span class="check">✓</span><span>Q.lua</span></div>
+                    </div>
                 </div>
                 
+                <!-- Operating System Section -->
                 <h3>// operating system and other programs</h3>
-                <div class="tech-grid">
-                    <div class="tech-item learned"><span class="check">✓</span><span>Linux</span></div>
-                    <div class="tech-item learned"><span class="check">✓</span><span>Gimp</span></div>
-                    <div class="tech-item"><span class="uncheck">○</span><span>Figma</span></div>
-                    <div class="tech-item learned"><span class="check">✓</span><span>Kitty</span></div>
-                    <div class="tech-item"><span class="uncheck">○</span><span>Neovin</span></div>
-                    <div class="tech-item learned"><span class="check">✓</span><span>GitHub</span></div>
+                <div class="sidebar-card">
+                    <div class="card-profile">
+                        <div class="avatar">RC</div>
+                        <span class="username">@RchrdAriza</span>
+                    </div>
+                    <div class="tech-grid">
+                        <div class="tech-item learned"><span class="check">✓</span><span>Linux</span></div>
+                        <div class="tech-item learned"><span class="check">✓</span><span>Gimp</span></div>
+                        <div class="tech-item"><span class="uncheck">○</span><span>Figma</span></div>
+                        <div class="tech-item learned"><span class="check">✓</span><span>Kitty</span></div>
+                        <div class="tech-item"><span class="uncheck">○</span><span>Neovin</span></div>
+                        <div class="tech-item learned"><span class="check">✓</span><span>GitHub</span></div>
+                    </div>
                 </div>
                 
+                <!-- Languages Section -->
                 <h3>// languages i speak or am learning</h3>
-                <div class="languages-list">
-                    <div class="language-item"><span class="flag">🇪🇸</span><span>spanish</span></div>
-                    <div class="language-item"><span class="flag">🇬🇧</span><span>english</span></div>
-                    <div class="language-item"><span class="flag">🇮🇹</span><span>italian</span></div>
+                <div class="sidebar-card">
+                    <div class="languages-list">
+                        <div class="language-item"><span class="flag">🇪🇸</span><span>spanish</span></div>
+                        <div class="language-item"><span class="flag">🇬🇧</span><span>english</span></div>
+                        <div class="language-item"><span class="flag">🇮🇹</span><span>italian</span></div>
+                    </div>
                 </div>
             </div>
         </section>
