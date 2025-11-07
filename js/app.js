@@ -1,45 +1,38 @@
-// Navigation functionality
-        const navLinks = document.querySelectorAll('.nav-links a');
-        const pages = document.querySelectorAll('.page-content');
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                
-                // Remove active class from all links and pages
-                navLinks.forEach(l => l.classList.remove('active'));
-                pages.forEach(p => p.classList.remove('active'));
-                
-                // Add active class to clicked link
-                link.classList.add('active');
-                
-                // Show corresponding page
-                const pageId = link.getAttribute('data-page');
-                document.getElementById(pageId).classList.add('active');
-            });
+function toggleSidebar(header) {
+    const icon = header.querySelector('.icon');
+    const items = header.nextElementSibling;
+    
+    icon.classList.toggle('collapsed');
+    items.classList.toggle('collapsed');
+}
+
+// --- Lógica de Carga de Página ---
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // --- Lógica de Menú Hamburguesa (Global) ---
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('nav');
+    if (navToggle) {
+        navToggle.addEventListener('click', () => {
+            nav.classList.toggle('nav-open');
         });
-
-        // Sidebar toggle functionality
-        function toggleSidebar(header) {
-            const icon = header.querySelector('.icon');
-            const items = header.nextElementSibling;
-            
-            icon.classList.toggle('collapsed');
-            items.classList.toggle('collapsed');
+    }
+    
+    // --- Lógica de Typewriter (se ejecuta en CUALQUIER página que la tenga) ---
+    // Esto funciona para 'hello.html' (ahora index.html) y para 'contact.html'
+    const subtitleElement = document.querySelector('.hello-page .subtitle');
+    
+    if (subtitleElement) {
+        
+        // Determina qué texto escribir basándose en el ID de la sección padre
+        let textToType = "Developer"; // Default
+        const parentSection = subtitleElement.closest('.page-content');
+        
+        if (parentSection && parentSection.id === 'contact') {
+            textToType = "Let's connect";
         }
 
-        // Brand link navigation
-        document.querySelector('.nav-brand').addEventListener('click', (e) => {
-            e.preventDefault();
-            navLinks.forEach(l => l.classList.remove('active'));
-            pages.forEach(p => p.classList.remove('active'));
-            navLinks[0].classList.add('active');
-            document.getElementById('hello').classList.add('active');
-        });
-
-        // Typewriter effect
-        const subtitleElement = document.querySelector('.hello-page .subtitle');
-        const textToType = "Developer";
         let charIndex = 0;
         let isDeleting = false;
 
@@ -59,17 +52,6 @@
                 setTimeout(typeWriter, 1200);
             }
         }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            if(subtitleElement) {
-                setTimeout(typeWriter, 500);
-            }
-        });
-
-        // Responsive navigation
-        const navToggle = document.querySelector('.nav-toggle');
-        const nav = document.querySelector('nav');
-
-        navToggle.addEventListener('click', () => {
-            nav.classList.toggle('nav-open');
-        });
+        setTimeout(typeWriter, 500);
+    }
+});

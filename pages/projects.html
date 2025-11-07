@@ -3,42 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Richard Ariza - Developer Portfolio</title>
+    <title>Projects - Richard Ariza</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
   </head>
 <body>
     <nav>
-        <a href="index.html" class="nav-brand">richard-ariza</a>
+        <a href="../index.html" class="nav-brand">richard-ariza</a>
         <button class="nav-toggle" aria-label="toggle navigation">
             <span class="hamburger"></span>
         </button>
         <ul class="nav-links">
-            <li><a href="index.html" class="active">_hello</a></li>
-            <li><a href="pages/about.html">_about-me</a></li>
-            <li><a href="pages/projects.html">_projects</a></li>
+            <li><a href="../index.html">_hello</a></li>
+            <li><a href="about.html">_about-me</a></li>
+            <li><a href="projects.html" class="active">_projects</a></li>
         </ul>
-        <a href="pages/contact.html" class="nav-contact">_contact-me</a>
+        <a href="contact.html" class="nav-contact">_contact-me</a>
     </nav>
 
     <main>
-        <section class="page-content hello-page active" id="hello">
-            <div class="hello-content">
-                <h2>Hi all. I am</h2>
-                <h1>Richard ariza</h1>
-                <p class="subtitle">&gt; Developer</p>
-                
-                <div class="code-block">
-                    <p class="code-comment">// my number</p>
-                    <p><span class="code-keyword">const</span> <span class="code-variable">telephoneNum</span> = <span class="code-number">301 2039 267</span>;</p>
-                    <p class="code-comment">// my email</p>
-                    <p><span class="code-keyword">const</span> <span class="code-variable">email</span> = <span class="code-string">"richardariza8560@gmail.com"</span>;</p>
-                    <p class="code-comment">// you can also see it on my GitHub page</p>
-                    <p><span class="code-keyword">const</span> <span class="code-variable">githubLink</span> = <span class="code-string">"https://github.com/RchrAriza"</span>;</p>
-                    <p class="code-comment">// you can check my linkedin page</p>
-                    <p><span class="code-keyword">const</span> <span class="code-variable">linkedinPage</span> = <span class="code-string">"Linkedinlink"</span>;</p>
+        <section class="page-content projects-page active" id="projects">
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <div class="sidebar-header" onclick="toggleSidebar(this)">
+                        <span class="icon">▼</span>
+                        <span>projects</span>
+                    </div>
+                    <div class="sidebar-items">
+                        <div class="sidebar-item">
+                            <span class="icon">📁</span>
+                            <span>MySimMyWay</span>
+                        </div>
+                        <div class="sidebar-item">
+                            <span class="icon">📁</span>
+                            <span>Project 2</span>
+                        </div>
+                        <div class="sidebar-item">
+                            <span class="icon">📁</span>
+                            <span>Project 3</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="projects-content">
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h3>project 1</h3>
+                        <div class="project-name">// MySimMyWay</div>
+                    </div>
+                    <div class="project-card">
+                        <h3>project 2</h3>
+                        <div class="project-name">// Nombre de proyecto</div>
+                    </div>
+                    <div class="project-card">
+                        <h3>project 3</h3>
+                        <div class="project-name">// Nombre de proyecto</div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -59,6 +82,6 @@
         <div class="footer-right">@RchrdAriza</div>
     </footer>
 
-    <script src="js/app.js"></script>
+    <script src="../js/app.js"></script>
 </body>
 </html>
