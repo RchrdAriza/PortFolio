@@ -27,6 +27,30 @@ function toggleSidebar(header) {
   }
 }
 
+function initSidebarContentSwitcher() {
+  const fileItems = document.querySelectorAll(
+    ".sidebar .sidebar-item.final-item"
+  );
+  const contentPanels = document.querySelectorAll(".code-content-panel");
+
+  if (!fileItems.length || !contentPanels.length) return;
+
+  fileItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      const targetId = item.getAttribute("data-target");
+      const targetPanel = targetId && document.getElementById(targetId);
+
+      if (!targetPanel) return;
+
+      fileItems.forEach((file) => file.classList.remove("active"));
+      contentPanels.forEach((panel) => panel.classList.remove("active"));
+
+      item.classList.add("active");
+      targetPanel.classList.add("active");
+    });
+  });
+}
+
 // --- Lógica de Carga de Página ---
 document.addEventListener("DOMContentLoaded", () => {
   // --- Lógica de Menú Hamburguesa (Global) ---
@@ -78,6 +102,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const navElement = document.querySelector("nav");
   const footerElement = document.querySelector("footer");
   const mainElement = document.querySelector("main"); // El <main> que contiene tus .page-content
+
+  initSidebarContentSwitcher();
 
   // 1. Función para actualizar el fondo
   function updateNavFooterBackground(activePageId) {

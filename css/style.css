@@ -378,6 +378,12 @@ main {
   color: var(--portfolio-muted);
 }
 
+.sidebar-item.final-item.active {
+  background: rgba(67, 217, 173, 0.08);
+  color: var(--portfolio-text);
+  border-left: 2px solid var(--portfolio-accent);
+}
+
 .sidebar-item.final-item:hover {
   color: var(--portfolio-text);
 }
@@ -462,6 +468,14 @@ main {
   line-height: 1.8;
   color: var(--portfolio-muted);
   overflow-y: auto;
+}
+
+.code-content-panel {
+  display: none;
+}
+
+.code-content-panel.active {
+  display: block;
 }
 
 .code-content p {
