@@ -1,12 +1,17 @@
 :root {
   /* Custom portfolio colors */
   --portfolio-bg: #011627;
-  --portfolio-bg-gradient: linear-gradient(135deg, #011627 0%, #014361 50%, #01a9b4 100%);
-  --portfolio-text: #E5E9F0;
-  --portfolio-accent: #43D9AD;
-  --portfolio-muted: #607B96;
-  --portfolio-orange: #FEA55F;
-  --portfolio-border: #1E2D3D;
+  --portfolio-bg-gradient: linear-gradient(
+    135deg,
+    #011627 0%,
+    #014361 50%,
+    #01a9b4 100%
+  );
+  --portfolio-text: #e5e9f0;
+  --portfolio-accent: #43d9ad;
+  --portfolio-muted: #607b96;
+  --portfolio-orange: #fea55f;
+  --portfolio-border: #1e2d3d;
   --portfolio-card-bg: #011221;
 }
 
@@ -17,8 +22,8 @@
 }
 
 body {
-  font-family: 'Fira Code', 'Courier New', monospace;
-  background: url('../imgs/fondo.jpg') no-repeat center center / cover;
+  font-family: "Fira Code", "Courier New", monospace;
+  background: url("../imgs/fondo.jpg") no-repeat center center / cover;
   color: var(--portfolio-text);
   min-height: 100vh;
   display: flex;
@@ -58,7 +63,7 @@ nav {
 
 .hamburger::before,
 .hamburger::after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   width: 100%;
@@ -97,7 +102,6 @@ nav {
   transition: color 0.3s;
 }
 
-
 .nav-links {
   display: flex;
   flex: 1;
@@ -125,7 +129,7 @@ nav {
 }
 
 .nav-links a.active::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -153,7 +157,7 @@ nav {
 }
 
 .nav-contact.active::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   right: 0;
@@ -206,7 +210,7 @@ main {
   align-items: center;
   padding: 2rem 2rem 2rem 11rem;
   text-align: left;
-  background: url('../imgs/fondo.jpg') no-repeat center center / cover;
+  background: url("../imgs/fondo.jpg") no-repeat center center / cover;
 }
 
 .hello-content h2 {
@@ -231,14 +235,15 @@ main {
 }
 
 .hello-content .subtitle.typing::after {
-  content: '|';
+  content: "|";
   animation: blink 1s step-end infinite;
   color: var(--portfolio-accent);
   font-weight: 200;
 }
 
 @keyframes blink {
-  from, to {
+  from,
+  to {
     opacity: 1;
   }
   50% {
@@ -259,13 +264,13 @@ main {
 }
 
 .code-comment {
-  color: #8892B0;
+  color: #8892b0;
   font-style: italic;
   opacity: 0.9;
 }
 
 .code-keyword {
-  color: #C792EA;
+  color: #c792ea;
 }
 
 .code-variable {
@@ -277,7 +282,7 @@ main {
 }
 
 .code-number {
-  color: #F78C6C;
+  color: #f78c6c;
 }
 
 /* About Page */
@@ -386,7 +391,7 @@ main {
 }
 
 .folder-icon.bio-color {
-  color: #E99287;
+  color: #e99287;
 }
 
 .folder-icon.interests-color {
@@ -394,7 +399,7 @@ main {
 }
 
 .folder-icon.education-color {
-  color: #3A9DFF;
+  color: #3a9dff;
 }
 
 .file-icon {
@@ -460,7 +465,7 @@ main {
 }
 
 .bracket-text {
-  color: #FF5454;
+  color: #ff5454;
 }
 
 .right-sidebar {
@@ -571,7 +576,7 @@ main {
 .projects-page {
   flex-direction: row;
   height: calc(100vh - 120px);
-  background-color: var(--portfolio-bg); 
+  background-color: var(--portfolio-bg);
 }
 
 .projects-content {
@@ -680,9 +685,8 @@ footer {
   }
 
   .hello-page {
-  padding: 2rem 2rem 2rem 2rem;
-  
-}
+    padding: 2rem 2rem 2rem 2rem;
+  }
 
   .nav-contact {
     display: none;
@@ -703,9 +707,9 @@ footer {
   }
 
   .nav-open .nav-links {
-    max-height: 500px; 
+    max-height: 500px;
   }
-  
+
   .nav-links a {
     padding: 1rem;
     font-size: 1rem;
@@ -718,35 +722,35 @@ footer {
   .nav-links li {
     width: 100%;
   }
-  
+
   .hello-content h1 {
     font-size: 2.5rem;
   }
-  
+
   .hello-content .subtitle {
     font-size: 1.25rem;
   }
-  
+
   .about-page,
   .projects-page {
     flex-direction: column;
     height: auto;
   }
-  
+
   .sidebar,
   .right-sidebar {
     width: 100%;
     max-height: 300px;
   }
-  
+
   .content-area {
     flex-direction: column;
   }
-  
+
   .line-numbers {
     display: none;
   }
-  
+
   .projects-grid {
     grid-template-columns: 1fr;
   }
@@ -788,23 +792,22 @@ footer {
     font-size: 0.9rem;
     padding: 0.75rem 1rem;
   }
-  
+
   .hello-content h1 {
     font-size: 2rem;
   }
-  
+
   .code-block {
     padding: 1rem;
     font-size: 0.85rem;
   }
-  
+
   footer {
     flex-direction: column;
     gap: 0.5rem;
     text-align: center;
   }
 }
-
 
 nav.solid-background,
 footer.solid-background {
