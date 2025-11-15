@@ -442,13 +442,17 @@ main {
 .line-numbers {
   display: flex;
   flex-direction: column;
-  padding: 2rem 0.5rem;
+  padding: 2.2rem 0.5rem;
   color: var(--portfolio-muted);
   font-size: 0.9rem;
   line-height: 1.8;
   user-select: none;
   background: rgba(1, 18, 33, 0.4);
   border-right: 1px solid var(--portfolio-border);
+}
+
+.line-numbers > div {
+  padding: 0.2px 0.2rem;
 }
 
 .code-content {
@@ -548,6 +552,11 @@ main {
 .tech-item .uncheck {
   color: var(--portfolio-muted);
   opacity: 0.3;
+  flex-shrink: 0;
+}
+
+.tech-item .tech-icon {
+  font-size: 1.1rem;
   flex-shrink: 0;
 }
 
