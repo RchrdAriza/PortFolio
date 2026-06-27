@@ -662,11 +662,13 @@ footer {
   align-items: center;
   color: var(--portfolio-muted);
   border-right: 1px solid var(--portfolio-border);
+  margin-right: auto;
 }
 
 .footer-left > span {
   padding: 0.75rem 1.5rem;
   border-right: 1px solid var(--portfolio-border);
+  color: var(--portfolio-muted);
 }
 
 .social-links {
