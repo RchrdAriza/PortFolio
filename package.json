@@ -1,0 +1,27 @@
+{
+  "name": "port-folio",
+  "version": "1.0.0",
+  "description": "Richard Ariza - Developer Portfolio with Vercel Analytics",
+  "scripts": {
+    "dev": "npx serve .",
+    "start": "npx serve ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RchrdAriza/PortFolio.git"
+  },
+  "keywords": [
+    "portfolio",
+    "developer",
+    "static-site"
+  ],
+  "author": "Richard Ariza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RchrdAriza/PortFolio/issues"
+  },
+  "homepage": "https://github.com/RchrdAriza/PortFolio#readme",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
