@@ -854,3 +854,46 @@ footer.solid-background {
   background-color: rgba(1, 22, 39, 0.8); /* 80% opacidad de --portfolio-bg */
   backdrop-filter: blur(10px);
 }
+
+/* ── Custom Scrollbar ─────────────────────────────────────────── */
+.content-area,
+.sidebar,
+.right-sidebar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--portfolio-accent) transparent;
+}
+
+.content-area::-webkit-scrollbar,
+.sidebar::-webkit-scrollbar,
+.right-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.content-area::-webkit-scrollbar-track,
+.sidebar::-webkit-scrollbar-track,
+.right-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+
+.content-area::-webkit-scrollbar-thumb,
+.sidebar::-webkit-scrollbar-thumb,
+.right-sidebar::-webkit-scrollbar-thumb {
+  background: var(--portfolio-accent);
+  border-radius: 10px;
+  opacity: 0.6;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content-area::-webkit-scrollbar-thumb:hover,
+.sidebar::-webkit-scrollbar-thumb:hover,
+.right-sidebar::-webkit-scrollbar-thumb:hover {
+  background: #6ef4cc;
+  box-shadow: 0 0 8px rgba(67, 217, 173, 0.6);
+}
+
+.content-area::-webkit-scrollbar-corner,
+.sidebar::-webkit-scrollbar-corner,
+.right-sidebar::-webkit-scrollbar-corner {
+  background: transparent;
+}
