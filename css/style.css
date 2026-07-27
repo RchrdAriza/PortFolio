@@ -25,10 +25,10 @@ body {
   font-family: "Fira Code", "Courier New", monospace;
   background: url("../imgs/fondo.jpg") no-repeat center center / cover;
   color: var(--portfolio-text);
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 /* Navigation */
@@ -181,6 +181,7 @@ main {
   flex: 1;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .page-content {
@@ -288,8 +289,9 @@ main {
 /* About Page */
 .about-page {
   flex-direction: row;
-  height: calc(100vh - 120px);
+  height: 100%;
   background-color: var(--portfolio-bg);
+  overflow: hidden;
 }
 
 .sidebar {
@@ -442,7 +444,7 @@ main {
 .content-area {
   flex: 1;
   display: flex;
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 .line-numbers {
@@ -467,7 +469,6 @@ main {
   font-size: 0.95rem;
   line-height: 1.8;
   color: var(--portfolio-muted);
-  overflow-y: auto;
 }
 
 .code-content-panel {
@@ -598,8 +599,9 @@ main {
 /* Projects Page */
 .projects-page {
   flex-direction: row;
-  height: calc(100vh - 120px);
+  height: 100%;
   background-color: var(--portfolio-bg);
+  overflow: hidden;
 }
 
 .projects-content {
@@ -703,6 +705,16 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  body {
+    height: auto;
+    overflow: auto;
+    overflow-x: hidden;
+  }
+
+  main {
+    overflow: visible;
+  }
+
   .nav-toggle {
     display: block;
     margin-left: auto;

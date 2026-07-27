@@ -27,6 +27,28 @@ function toggleSidebar(header) {
   }
 }
 
+// Genera los números de línea dinámicamente según las <p> del panel activo
+function updateLineNumbers() {
+  const lineNumbersEl = document.getElementById("line-numbers");
+  const activePanel = document.querySelector(".code-content-panel.active");
+  if (!lineNumbersEl || !activePanel) return;
+
+  const lineCount = activePanel.querySelectorAll("p").length;
+  lineNumbersEl.innerHTML = "";
+  for (let i = 1; i <= lineCount; i++) {
+    const div = document.createElement("div");
+    div.textContent = i;
+    lineNumbersEl.appendChild(div);
+  }
+
+  // Sincroniza el scroll del contenido con los números de línea
+  const codeContent = document.querySelector(".code-content");
+  const contentArea = document.querySelector(".content-area");
+  if (codeContent && contentArea) {
+    contentArea.scrollTop = 0;
+  }
+}
+
 function initSidebarContentSwitcher() {
   const fileItems = document.querySelectorAll(
     ".sidebar .sidebar-item.final-item"
@@ -47,6 +69,7 @@ function initSidebarContentSwitcher() {
 
       item.classList.add("active");
       targetPanel.classList.add("active");
+      updateLineNumbers();
     });
   });
 }
@@ -104,6 +127,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const mainElement = document.querySelector("main"); // El <main> que contiene tus .page-content
 
   initSidebarContentSwitcher();
+  updateLineNumbers();
+
+  // Sincronizar scroll: al hacer scroll en content-area, line-numbers sigue
+  const contentArea = document.querySelector(".content-area");
+  const lineNumbersEl = document.getElementById("line-numbers");
+  if (contentArea && lineNumbersEl) {
+    contentArea.addEventListener("scroll", () => {
+      lineNumbersEl.scrollTop = contentArea.scrollTop;
+    });
+  }
 
   // 1. Función para actualizar el fondo
   function updateNavFooterBackground(activePageId) {
