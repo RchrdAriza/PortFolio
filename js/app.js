@@ -33,6 +33,13 @@ function updateLineNumbers() {
   const activePanel = document.querySelector(".code-content-panel.active");
   if (!lineNumbersEl || !activePanel) return;
 
+  // Ocultar números de línea si es el panel de la cuadrícula de proyectos
+  if (activePanel.id === "projects-grid-panel") {
+    lineNumbersEl.style.display = "none";
+  } else {
+    lineNumbersEl.style.display = "flex";
+  }
+
   const lineCount = activePanel.querySelectorAll("p").length;
   lineNumbersEl.innerHTML = "";
   for (let i = 1; i <= lineCount; i++) {
@@ -70,6 +77,45 @@ function initSidebarContentSwitcher() {
       item.classList.add("active");
       targetPanel.classList.add("active");
       updateLineNumbers();
+    });
+  });
+}
+
+function initProjectCards() {
+  const cards = document.querySelectorAll(".project-card");
+  cards.forEach((card) => {
+    card.addEventListener("click", () => {
+      const projectNameElement = card.querySelector(".project-name");
+      if (!projectNameElement) return;
+      const projectName = projectNameElement.textContent.replace("//", "").trim();
+
+      // Buscar el elemento final de la barra lateral que corresponde al README de este proyecto
+      const finalItems = document.querySelectorAll(".sidebar .sidebar-item.final-item");
+      let targetItem = null;
+      finalItems.forEach((item) => {
+        const parentItems = item.closest(".sidebar-items");
+        if (parentItems) {
+          const folderHeader = parentItems.previousElementSibling;
+          if (folderHeader && folderHeader.classList.contains("nested-header")) {
+            const folderName = folderHeader.querySelector("span:not(.icon)").textContent.trim();
+            if (folderName === projectName) {
+              targetItem = item;
+            }
+          }
+        }
+      });
+
+      if (targetItem) {
+        // Expandir carpeta si está contraída
+        const parentItems = targetItem.closest(".sidebar-items");
+        if (parentItems && parentItems.classList.contains("collapsed")) {
+          const folderHeader = parentItems.previousElementSibling;
+          if (folderHeader) {
+            toggleSidebar(folderHeader);
+          }
+        }
+        targetItem.click();
+      }
     });
   });
 }
@@ -127,6 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const mainElement = document.querySelector("main"); // El <main> que contiene tus .page-content
 
   initSidebarContentSwitcher();
+  initProjectCards();
   updateLineNumbers();
 
   // Sincronizar scroll: al hacer scroll en content-area, line-numbers sigue

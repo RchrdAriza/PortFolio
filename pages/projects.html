@@ -29,41 +29,271 @@
     <main>
       <section class="page-content projects-page active" id="projects">
         <div class="sidebar">
+          <!-- Projects Section -->
           <div class="sidebar-section">
             <div class="sidebar-header" onclick="toggleSidebar(this)">
               <span class="icon">▼</span>
               <span>projects</span>
             </div>
             <div class="sidebar-items">
-              <div class="sidebar-item">
-                <span class="icon">📁</span>
+              <!-- projects.json -->
+              <div
+                class="sidebar-item final-item active"
+                data-target="projects-grid-panel"
+              >
+                <svg
+                  class="file-icon"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  style="color: var(--portfolio-orange);"
+                >
+                  <path
+                    d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"
+                  ></path>
+                </svg>
+                <span>projects.json</span>
+              </div>
+
+              <!-- MySimMyWay -->
+              <div
+                class="sidebar-item nested-header"
+                onclick="toggleSidebar(this)"
+              >
+                <span class="icon">▼</span>
+                <svg
+                  class="folder-icon bio-color"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M10 4H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8c0-1.11-.9-2-2-2h-8l-2-2z"
+                  ></path>
+                </svg>
                 <span>MySimMyWay</span>
               </div>
-              <div class="sidebar-item">
-                <span class="icon">📁</span>
-                <span>Project 2</span>
+              <div class="sidebar-items">
+                <div
+                  class="sidebar-item final-item"
+                  data-target="mysimmyway-readme-panel"
+                >
+                  <svg
+                    class="file-icon"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"
+                    ></path>
+                  </svg>
+                  <span>README.md</span>
+                </div>
               </div>
-              <div class="sidebar-item">
-                <span class="icon">📁</span>
+
+              <!-- NvimOnMy_way -->
+              <div
+                class="sidebar-item nested-header"
+                onclick="toggleSidebar(this)"
+              >
+                <span class="icon collapsed">▼</span>
+                <svg
+                  class="folder-icon interests-color"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M10 4H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8c0-1.11-.9-2-2-2h-8l-2-2z"
+                  ></path>
+                </svg>
+                <span>NvimOnMy_way</span>
+              </div>
+              <div class="sidebar-items collapsed">
+                <div
+                  class="sidebar-item final-item"
+                  data-target="nvim-readme-panel"
+                >
+                  <svg
+                    class="file-icon"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"
+                    ></path>
+                  </svg>
+                  <span>README.md</span>
+                </div>
+              </div>
+
+              <!-- Project 3 -->
+              <div
+                class="sidebar-item nested-header"
+                onclick="toggleSidebar(this)"
+              >
+                <span class="icon collapsed">▼</span>
+                <svg
+                  class="folder-icon education-color"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M10 4H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8c0-1.11-.9-2-2-2h-8l-2-2z"
+                  ></path>
+                </svg>
                 <span>Project 3</span>
+              </div>
+              <div class="sidebar-items collapsed">
+                <div
+                  class="sidebar-item final-item"
+                  data-target="project3-readme-panel"
+                >
+                  <svg
+                    class="file-icon"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"
+                    ></path>
+                  </svg>
+                  <span>README.md</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contacts Section -->
+          <div class="sidebar-section">
+            <div class="sidebar-header" onclick="toggleSidebar(this)">
+              <span class="icon">▼</span>
+              <span>contacts</span>
+            </div>
+            <div class="sidebar-items">
+              <div class="contact-item">
+                <svg fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
+                  ></path>
+                  <path
+                    d="M18 8.118l-8 4-8-4V14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8.118z"
+                  ></path>
+                </svg>
+                <span>richardariza816@gmail.com</span>
+              </div>
+              <div class="contact-item">
+                <svg fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"
+                  ></path>
+                </svg>
+                <span>300 1428 165</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="projects-content">
-          <div class="projects-grid">
-            <div class="project-card">
-              <h3>project 1</h3>
-              <div class="project-name">// MySimMyWay</div>
+        <div class="content-area">
+          <div class="line-numbers" id="line-numbers"></div>
+          <div class="code-content">
+            <!-- Projects Grid Panel -->
+            <div class="code-content-panel active" id="projects-grid-panel">
+              <div class="projects-grid">
+                <div class="project-card">
+                  <h3>project 1</h3>
+                  <div class="project-name">// MySimMyWay</div>
+                  <p class="project-description">Simulador personal de rutas y mapas interactivos.</p>
+                  <div class="project-tags">
+                    <span class="tag">JavaScript</span>
+                  </div>
+                </div>
+                <div class="project-card">
+                  <h3>project 2</h3>
+                  <div class="project-name">// NvimOnMy_way</div>
+                  <p class="project-description">Configuración personalizada de Neovim con ~50 plugins: LSP, autocompletado, árbol de archivos, formateo y más. Listo para usar con un solo comando.</p>
+                  <div class="project-tags">
+                    <span class="tag">Lua</span>
+                    <span class="tag">Neovim</span>
+                    <span class="tag">Linux</span>
+                  </div>
+                  <a
+                    class="project-link"
+                    href="https://github.com/RchrdAriza/NvimOnMy_way"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Ver NvimOnMy_way en GitHub"
+                  >
+                    <svg fill="currentColor" viewBox="0 0 24 24" width="16" height="16"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    ver en github
+                  </a>
+                </div>
+                <div class="project-card">
+                  <h3>project 3</h3>
+                  <div class="project-name">// Project 3</div>
+                  <p class="project-description">Próximamente...</p>
+                  <div class="project-tags"></div>
+                </div>
+              </div>
             </div>
-            <div class="project-card">
-              <h3>project 2</h3>
-              <div class="project-name">// Nombre de proyecto</div>
+
+            <!-- MySimMyWay Readme Panel -->
+            <div class="code-content-panel" id="mysimmyway-readme-panel">
+              <p><span class="code-comment">/**</span></p>
+              <p><span class="code-comment"> * @file README.md</span></p>
+              <p><span class="code-comment"> * @project MySimMyWay</span></p>
+              <p><span class="code-comment"> * @description Simulador personal de rutas y mapas interactivos.</span></p>
+              <p><span class="code-comment"> */</span></p>
+              <p></p>
+              <p><span class="code-keyword">const</span> project = {</p>
+              <p>  name: <span class="code-string">"MySimMyWay"</span>,</p>
+              <p>  type: <span class="code-string">"Map & Routing Simulator"</span>,</p>
+              <p>  stack: [<span class="code-string">"JavaScript"</span>, <span class="code-string">"Leaflet.js"</span>, <span class="code-string">"HTML5"</span>, <span class="code-string">"CSS3"</span>],</p>
+              <p>  features: [</p>
+              <p>    <span class="code-string">"Interactive map rendering"</span>,</p>
+              <p>    <span class="code-string">"Personal route creation and tracking"</span>,</p>
+              <p>    <span class="code-string">"Real-time navigation simulation"</span></p>
+              <p>  ],</p>
+              <p>  status: <span class="code-string">"Completed"</span></p>
+              <p>};</p>
             </div>
-            <div class="project-card">
-              <h3>project 3</h3>
-              <div class="project-name">// Nombre de proyecto</div>
+
+            <!-- NvimOnMy_way Readme Panel -->
+            <div class="code-content-panel" id="nvim-readme-panel">
+              <p><span class="code-comment">/**</span></p>
+              <p><span class="code-comment"> * @file README.md</span></p>
+              <p><span class="code-comment"> * @project NvimOnMy_way</span></p>
+              <p><span class="code-comment"> * @description Configuración personalizada de Neovim con ~50 plugins.</span></p>
+              <p><span class="code-comment"> */</span></p>
+              <p></p>
+              <p><span class="code-keyword">const</span> config = {</p>
+              <p>  name: <span class="code-string">"NvimOnMy_way"</span>,</p>
+              <p>  type: <span class="code-string">"Neovim Config"</span>,</p>
+              <p>  language: <span class="code-string">"Lua"</span>,</p>
+              <p>  requirements: [</p>
+              <p>    <span class="code-string">"Python & pip"</span>,</p>
+              <p>    <span class="code-string">"Neovim >= 0.12.0"</span>,</p>
+              <p>    <span class="code-string">"nerdfonts"</span>,</p>
+              <p>    <span class="code-string">"NodeJS & tree-sitter-cli"</span></p>
+              <p>  ],</p>
+              <p>  installation: <span class="code-string">"git clone https://github.com/RchrdAriza/NvimOnMy_way ~/.config/nvim"</span>,</p>
+              <p>  keymaps: {</p>
+              <p>    leader: <span class="code-string">"Space"</span></p>
+              <p>  },</p>
+              <p>  plugins: [</p>
+              <p>    <span class="code-string">"lazy.nvim (Package Manager)"</span>,</p>
+              <p>    <span class="code-string">"neo-tree (File Explorer)"</span>,</p>
+              <p>    <span class="code-string">"nvim-lspconfig & mason (LSP)"</span>,</p>
+              <p>    <span class="code-string">"nvim-cmp (Completion)"</span>,</p>
+              <p>    <span class="code-string">"Tokyo-night (Colorscheme)"</span></p>
+              <p>  ]</p>
+              <p>};</p>
+            </div>
+
+            <!-- Project 3 Readme Panel -->
+            <div class="code-content-panel" id="project3-readme-panel">
+              <p><span class="code-comment">/**</span></p>
+              <p><span class="code-comment"> * @file README.md</span></p>
+              <p><span class="code-comment"> * @project Project 3</span></p>
+              <p><span class="code-comment"> * @description Próximamente...</span></p>
+              <p><span class="code-comment"> */</span></p>
             </div>
           </div>
         </div>
