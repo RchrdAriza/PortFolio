@@ -115,8 +115,35 @@ function initProjectCards() {
           }
         }
         targetItem.click();
+        // Registrar el estado para que el botón "atrás" vuelva a la cuadrícula
+        // de proyectos en lugar de navegar a la página anterior (_about-me).
+        history.pushState({ panel: "projects-grid-panel" }, "");
       }
     });
+  });
+}
+
+function initBackToProjects() {
+  window.addEventListener("popstate", () => {
+    const gridPanel = document.getElementById("projects-grid-panel");
+    if (!gridPanel) return;
+
+    const contentPanels = document.querySelectorAll(".code-content-panel");
+    const fileItems = document.querySelectorAll(
+      ".sidebar .sidebar-item.final-item"
+    );
+
+    contentPanels.forEach((panel) => panel.classList.remove("active"));
+    gridPanel.classList.add("active");
+
+    fileItems.forEach((item) => {
+      item.classList.remove("active");
+      if (item.getAttribute("data-target") === "projects-grid-panel") {
+        item.classList.add("active");
+      }
+    });
+
+    updateLineNumbers();
   });
 }
 
@@ -174,6 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   initSidebarContentSwitcher();
   initProjectCards();
+  initBackToProjects();
   updateLineNumbers();
 
   // Sincronizar scroll: al hacer scroll en content-area, line-numbers sigue
