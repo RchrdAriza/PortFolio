@@ -54,41 +54,6 @@
                 <span>projects.json</span>
               </div>
 
-              <!-- MySimMyWay -->
-              <div
-                class="sidebar-item nested-header"
-                onclick="toggleSidebar(this)"
-              >
-                <span class="icon">▼</span>
-                <svg
-                  class="folder-icon bio-color"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path
-                    d="M10 4H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8c0-1.11-.9-2-2-2h-8l-2-2z"
-                  ></path>
-                </svg>
-                <span>MySimMyWay</span>
-              </div>
-              <div class="sidebar-items">
-                <div
-                  class="sidebar-item final-item"
-                  data-target="mysimmyway-readme-panel"
-                >
-                  <svg
-                    class="file-icon"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"
-                    ></path>
-                  </svg>
-                  <span>README.md</span>
-                </div>
-              </div>
-
               <!-- NvimOnMy_way -->
               <div
                 class="sidebar-item nested-header"
@@ -124,7 +89,42 @@
                 </div>
               </div>
 
-              <!-- Project 3 -->
+              <!-- RetroPod -->
+              <div
+                class="sidebar-item nested-header"
+                onclick="toggleSidebar(this)"
+              >
+                <span class="icon collapsed">▼</span>
+                <svg
+                  class="folder-icon bio-color"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M10 4H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8c0-1.11-.9-2-2-2h-8l-2-2z"
+                  ></path>
+                </svg>
+                <span>RetroPod</span>
+              </div>
+              <div class="sidebar-items collapsed">
+                <div
+                  class="sidebar-item final-item"
+                  data-target="retropod-readme-panel"
+                >
+                  <svg
+                    class="file-icon"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"
+                    ></path>
+                  </svg>
+                  <span>README.md</span>
+                </div>
+              </div>
+
+              <!-- curlmoon -->
               <div
                 class="sidebar-item nested-header"
                 onclick="toggleSidebar(this)"
@@ -139,12 +139,47 @@
                     d="M10 4H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8c0-1.11-.9-2-2-2h-8l-2-2z"
                   ></path>
                 </svg>
-                <span>Project 3</span>
+                <span>curlmoon</span>
               </div>
               <div class="sidebar-items collapsed">
                 <div
                   class="sidebar-item final-item"
-                  data-target="project3-readme-panel"
+                  data-target="curlmoon-readme-panel"
+                >
+                  <svg
+                    class="file-icon"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"
+                    ></path>
+                  </svg>
+                  <span>README.md</span>
+                </div>
+              </div>
+
+              <!-- strudel-copilot -->
+              <div
+                class="sidebar-item nested-header"
+                onclick="toggleSidebar(this)"
+              >
+                <span class="icon collapsed">▼</span>
+                <svg
+                  class="folder-icon music-color"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M10 4H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8c0-1.11-.9-2-2-2h-8l-2-2z"
+                  ></path>
+                </svg>
+                <span>strudel-copilot</span>
+              </div>
+              <div class="sidebar-items collapsed">
+                <div
+                  class="sidebar-item final-item"
+                  data-target="strudel-readme-panel"
                 >
                   <svg
                     class="file-icon"
@@ -216,7 +251,9 @@
                         height="12"
                         aria-hidden="true"
                       >
-                        <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                        <path
+                          d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                        />
                       </svg>
                       <span>13 stars</span>
                     </div>
@@ -252,98 +289,138 @@
                   </div>
                 </div>
                 <div class="project-card">
-                  <div class="project-image placeholder">
-                    <svg
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      width="32"
-                      height="32"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M4 5h16v14H4V5zm1 1v8l5-5 4 4 3-3 3 3V6H5zm1 1h2v2H6V7zm11 3h2v2h-2v-2zM9 15l-3 3h12l-4-5-2.5 3L9 15z"
-                      />
-                    </svg>
-                    <span>imagen del proyecto</span>
+                  <div class="project-image">
+                    <img
+                      src="https://raw.githubusercontent.com/RchrdAriza/RetroPod/master/assets/images/hero_readme.png"
+                      alt="Vista previa de RetroPod"
+                      loading="lazy"
+                    />
                   </div>
                   <div class="card-body">
                     <!-- <h3>project 2</h3> -->
-                    <div class="project-name">// MySimMyWay</div>
+                    <div class="project-name">// RetroPod</div>
                     <p class="project-description">
-                      Simulador personal de rutas y mapas interactivos.
+                      Una app reproductora de música local diseñada para
+                      capturar la esencia nostálgica del icónico iPod Classic.
                     </p>
                     <div class="project-tags">
-                      <span class="tag">JavaScript</span>
+                      <span class="tag">Dart</span>
+                      <span class="tag">Flutter</span>
+                      <span class="tag">Music</span>
+                      <span class="tag">Y2K</span>
                     </div>
+                    <a
+                      class="project-link"
+                      href="https://github.com/RchrdAriza/RetroPod"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Ver RetroPod en GitHub"
+                    >
+                      <svg
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        width="16"
+                        height="16"
+                      >
+                        <path
+                          d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                        />
+                      </svg>
+                      ver en github
+                    </a>
                   </div>
                 </div>
                 <div class="project-card">
-                  <div class="project-image placeholder">
-                    <svg
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      width="32"
-                      height="32"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M4 5h16v14H4V5zm1 1v8l5-5 4 4 3-3 3 3V6H5zm1 1h2v2H6V7zm11 3h2v2h-2v-2zM9 15l-3 3h12l-4-5-2.5 3L9 15z"
-                      />
-                    </svg>
-                    <span>imagen del proyecto</span>
+                  <div class="project-image">
+                    <img
+                      src="https://res.cloudinary.com/dhqo7n9gd/image/upload/v1786722588/CURLMOON_tttliv.png"
+                      alt="Vista previa de curlmoon"
+                      loading="lazy"
+                    />
                   </div>
                   <div class="card-body">
                     <!-- <h3>project 3</h3> -->
-                    <div class="project-name">// Project 3</div>
-                    <p class="project-description">Próximamente...</p>
-                    <div class="project-tags"></div>
+                    <div class="project-name">// curlmoon</div>
+                    <p class="project-description">
+                      Un Postman de bolsillo para la terminal, construido para
+                      Termux pero funciona donde Go corra. Cliente HTTP TUI de
+                      un solo binario: colecciones, entornos, helpers de auth,
+                      historial de requests y sustitución de {{variables}}, todo
+                      desde el teclado.
+                    </p>
+                    <div class="project-tags">
+                      <span class="tag">Go</span>
+                      <span class="tag">TUI</span>
+                      <span class="tag">HTTP</span>
+                      <span class="tag">Termux</span>
+                    </div>
+                    <a
+                      class="project-link"
+                      href="https://github.com/RchrdAriza/curlmoon"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Ver curlmoon en GitHub"
+                    >
+                      <svg
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        width="16"
+                        height="16"
+                      >
+                        <path
+                          d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                        />
+                      </svg>
+                      ver en github
+                    </a>
+                  </div>
+                </div>
+                <div class="project-card">
+                  <div class="project-image">
+                    <img
+                      src="https://raw.githubusercontent.com/RchrdAriza/strudel-copilot/main/public/strudel-claude.png"
+                      alt="Vista previa de strudel-copilot"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="card-body">
+                    <!-- <h3>project 4</h3> -->
+                    <div class="project-name">// strudel-copilot</div>
+                    <p class="project-description">
+                      Un experimento para tocar y aprender Strudel con Claude
+                      Code. Un entorno de live coding a pantalla completa para
+                      hacer música, construido para IA: expone APIs REST para
+                      que Claude pueda componer y controlar la música
+                      programáticamente.
+                    </p>
+                    <div class="project-tags">
+                      <span class="tag">JavaScript</span>
+                      <span class="tag">Strudel</span>
+                      <span class="tag">Live Coding</span>
+                      <span class="tag">REST API</span>
+                    </div>
+                    <a
+                      class="project-link"
+                      href="https://github.com/RchrdAriza/strudel-copilot"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Ver strudel-copilot en GitHub"
+                    >
+                      <svg
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        width="16"
+                        height="16"
+                      >
+                        <path
+                          d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                        />
+                      </svg>
+                      ver en github
+                    </a>
                   </div>
                 </div>
               </div>
-            </div>
-
-            <!-- MySimMyWay Readme Panel -->
-            <div class="code-content-panel" id="mysimmyway-readme-panel">
-              <p><span class="code-comment">/**</span></p>
-              <p><span class="code-comment"> * @file README.md</span></p>
-              <p><span class="code-comment"> * @project MySimMyWay</span></p>
-              <p>
-                <span class="code-comment">
-                  * @description Simulador personal de rutas y mapas
-                  interactivos.</span
-                >
-              </p>
-              <p><span class="code-comment"> */</span></p>
-              <p></p>
-              <p><span class="code-keyword">const</span> project = {</p>
-              <p>name: <span class="code-string">"MySimMyWay"</span>,</p>
-              <p>
-                type:
-                <span class="code-string">"Map & Routing Simulator"</span>,
-              </p>
-              <p>
-                stack: [<span class="code-string">"JavaScript"</span>,
-                <span class="code-string">"Leaflet.js"</span>,
-                <span class="code-string">"HTML5"</span>,
-                <span class="code-string">"CSS3"</span>],
-              </p>
-              <p>features: [</p>
-              <p>
-                <span class="code-string">"Interactive map rendering"</span>,
-              </p>
-              <p>
-                <span class="code-string"
-                  >"Personal route creation and tracking"</span
-                >,
-              </p>
-              <p>
-                <span class="code-string"
-                  >"Real-time navigation simulation"</span
-                >
-              </p>
-              <p>],</p>
-              <p>status: <span class="code-string">"Completed"</span></p>
-              <p>};</p>
             </div>
 
             <!-- NvimOnMy_way Readme Panel -->
@@ -397,17 +474,124 @@
               <p>};</p>
             </div>
 
-            <!-- Project 3 Readme Panel -->
-            <div class="code-content-panel" id="project3-readme-panel">
+            <!-- curlmoon Readme Panel -->
+            <div class="code-content-panel" id="curlmoon-readme-panel">
               <p><span class="code-comment">/**</span></p>
               <p><span class="code-comment"> * @file README.md</span></p>
-              <p><span class="code-comment"> * @project Project 3</span></p>
+              <p><span class="code-comment"> * @project curlmoon</span></p>
               <p>
                 <span class="code-comment">
-                  * @description Próximamente...</span
+                  * @description A pocket-sized Postman for the terminal — built
+                  for Termux, but it runs anywhere Go does.</span
                 >
               </p>
               <p><span class="code-comment"> */</span></p>
+              <p></p>
+              <p><span class="code-keyword">const</span> curlmoon = {</p>
+              <p>name: <span class="code-string">"curlmoon"</span>,</p>
+              <p>type: <span class="code-string">"TUI HTTP Client"</span>,</p>
+              <p>language: <span class="code-string">"Go"</span>,</p>
+              <p>binary: <span class="code-string">"single-binary"</span>,</p>
+              <p>features: [</p>
+              <p><span class="code-string">"Collections"</span>,</p>
+              <p><span class="code-string">"Environments"</span>,</p>
+              <p><span class="code-string">"Auth helpers"</span>,</p>
+              <p><span class="code-string">"Request history"</span>,</p>
+              <p>
+                <span class="code-string">"{{variable}} substitution"</span>
+              </p>
+              <p>],</p>
+              <p>
+                input:
+                <span class="code-string"
+                  >"keyboard-driven, no mouse required"</span
+                >,
+              </p>
+              <p>
+                runs:
+                <span class="code-string">"Termux & anywhere Go does"</span>
+              </p>
+              <p>};</p>
+            </div>
+
+            <!-- strudel-copilot Readme Panel -->
+            <div class="code-content-panel" id="strudel-readme-panel">
+              <p><span class="code-comment">/**</span></p>
+              <p><span class="code-comment"> * @file README.md</span></p>
+              <p>
+                <span class="code-comment"> * @project strudel-copilot</span>
+              </p>
+              <p>
+                <span class="code-comment">
+                  * @description An experiment to play and learn Strudel with
+                  Claude Code.</span
+                >
+              </p>
+              <p><span class="code-comment"> */</span></p>
+              <p></p>
+              <p><span class="code-keyword">const</span> strudel = {</p>
+              <p>name: <span class="code-string">"strudel-copilot"</span>,</p>
+              <p>
+                type:
+                <span class="code-string">"Live Coding Environment"</span>,
+              </p>
+              <p>
+                aim:
+                <span class="code-string">"AI-driven music composition"</span>,
+              </p>
+              <p>
+                size: <span class="code-string">"minimal, full-screen"</span>,
+              </p>
+              <p>stack: [</p>
+              <p><span class="code-string">"Strudel"</span>,</p>
+              <p><span class="code-string">"REST API"</span>,</p>
+              <p><span class="code-string">"JavaScript"</span></p>
+              <p>],</p>
+              <p>features: [</p>
+              <p>
+                <span class="code-string"
+                  >"Compose music programmatically via API"</span
+                >,
+              </p>
+              <p>
+                <span class="code-string"
+                  >"Claude Code controls the music"</span
+                >
+              </p>
+              <p>]</p>
+              <p>};</p>
+            </div>
+
+            <!-- RetroPod Readme Panel -->
+            <div class="code-content-panel" id="retropod-readme-panel">
+              <p><span class="code-comment">/**</span></p>
+              <p><span class="code-comment"> * @file README.md</span></p>
+              <p><span class="code-comment"> * @project RetroPod</span></p>
+              <p>
+                <span class="code-comment">
+                  * @description A local music player app designed to capture
+                  the nostalgic essence of the iconic iPod Classic.</span
+                >
+              </p>
+              <p><span class="code-comment"> */</span></p>
+              <p></p>
+              <p><span class="code-keyword">const</span> retropod = {</p>
+              <p>name: <span class="code-string">"RetroPod"</span>,</p>
+              <p>
+                type: <span class="code-string">"Local Music Player"</span>,
+              </p>
+              <p>stack: [</p>
+              <p><span class="code-string">"Dart"</span>,</p>
+              <p><span class="code-string">"Flutter"</span></p>
+              <p>],</p>
+              <p>inspiration: [</p>
+              <p><span class="code-string">"iPod Classic"</span>,</p>
+              <p><span class="code-string">"Nostalgia"</span></p>
+              <p>],</p>
+              <p>
+                audio: <span class="code-string">"local only, no cloud"</span>
+              </p>
+              <p>};</p>
             </div>
           </div>
         </div>

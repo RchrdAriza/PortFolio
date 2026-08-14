@@ -123,6 +123,19 @@ function initProjectCards() {
   });
 }
 
+function initProjectLinks() {
+  const links = document.querySelectorAll(".project-link");
+  links.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      // No abrir el panel README: este clic es solo para ir a GitHub
+      event.stopPropagation();
+      // Registrar estado para que el botón "atrás" vuelva a la grilla de
+      // proyectos en lugar de salir de la página (_about-me / _hello).
+      history.pushState({ panel: "projects-grid-panel" }, "");
+    });
+  });
+}
+
 function initBackToProjects() {
   window.addEventListener("popstate", () => {
     const gridPanel = document.getElementById("projects-grid-panel");
@@ -201,6 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   initSidebarContentSwitcher();
   initProjectCards();
+  initProjectLinks();
   initBackToProjects();
   updateLineNumbers();
 

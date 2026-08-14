@@ -410,6 +410,10 @@ main {
   color: #3a9dff;
 }
 
+.folder-icon.music-color {
+  color: #c678dd;
+}
+
 .file-icon {
   color: var(--portfolio-muted);
 }
