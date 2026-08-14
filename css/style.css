@@ -414,6 +414,10 @@ main {
   color: #c678dd;
 }
 
+.folder-icon.sena-color {
+  color: #3ddc84;
+}
+
 .file-icon {
   color: var(--portfolio-muted);
 }
