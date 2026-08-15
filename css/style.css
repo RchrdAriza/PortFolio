@@ -25,7 +25,7 @@ body {
   font-family: "Fira Code", "Courier New", monospace;
   background: url("../imgs/fondo.jpg") no-repeat center center / cover;
   color: var(--portfolio-text);
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -79,6 +79,10 @@ body:has(.projects-page) .nav-toggle {
 }
 
 body:has(.about-page) .nav-actions {
+  padding-right: 1rem;
+}
+
+body:has(#hello) .nav-actions {
   padding-right: 1rem;
 }
 
@@ -806,6 +810,14 @@ main {
 }
 
 /* Footer */
+body:has(#hello) footer {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  background: rgba(1, 18, 33, 0.35);
+}
+
 footer {
   display: flex;
   justify-content: space-between;
@@ -997,6 +1009,12 @@ footer {
     font-size: 0.8rem;
   }
 
+  footer.solid-background {
+    position: sticky;
+    bottom: 0;
+    z-index: 50;
+  }
+
   .footer-left {
     flex-wrap: nowrap;
     width: auto;
@@ -1040,6 +1058,11 @@ footer {
     flex-direction: row;
     gap: 0;
     text-align: left;
+  }
+
+  .about-page .sidebar,
+  .projects-page .sidebar {
+    top: 36px;
   }
 
   .footer-left > span,
@@ -1131,7 +1154,8 @@ footer.solid-background {
     flex-direction: column;
     padding: 0;
     overflow: visible;
-    position: relative;
+    position: sticky;
+    top: 40px;
     z-index: 30;
     flex-shrink: 0;
     border-right: 1px solid var(--portfolio-border);
@@ -1272,8 +1296,6 @@ footer.solid-background {
   /* Turn the projects layout into the same row-based IDE layout */
   .projects-page {
     flex-direction: row !important;
-    height: calc(100vh - 72px - 43px); /* viewport minus nav & footer */
-    overflow: hidden;
   }
 
   /* Thin 40px activity bar */
@@ -1283,7 +1305,8 @@ footer.solid-background {
     flex-direction: column;
     padding: 0;
     overflow: visible;
-    position: relative;
+    position: sticky;
+    top: 40px;
     z-index: 30;
     flex-shrink: 0;
     border-right: 1px solid var(--portfolio-border);
@@ -1329,7 +1352,7 @@ footer.solid-background {
   }
 
   /* Fly-out panel */
-  .projects-page .sidebar-section > .sidebar-items {
+.projects-page .sidebar-section > .sidebar-items {
     position: absolute;
     left: 40px;
     top: 0;
@@ -1342,8 +1365,6 @@ footer.solid-background {
     background: rgba(1, 22, 39, 0.97);
     border-right: 1px solid var(--portfolio-border);
     box-shadow: 8px 0 24px rgba(0, 0, 0, 0.4);
-    scrollbar-width: thin;
-    scrollbar-color: var(--portfolio-accent) transparent;
   }
 
   .projects-page .sidebar-section > .sidebar-items.open {
