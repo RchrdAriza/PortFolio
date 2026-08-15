@@ -1154,8 +1154,10 @@ footer.solid-background {
     flex-direction: column;
     padding: 0;
     overflow: visible;
-    position: sticky;
+    position: fixed;
     top: 40px;
+    left: 0;
+    bottom: 0;
     z-index: 30;
     flex-shrink: 0;
     border-right: 1px solid var(--portfolio-border);
@@ -1274,6 +1276,7 @@ footer.solid-background {
     flex-direction: column;
     flex: 1;
     min-width: 0;
+    margin-left: 40px;
   }
 
   .about-page .content-area {
@@ -1305,8 +1308,10 @@ footer.solid-background {
     flex-direction: column;
     padding: 0;
     overflow: visible;
-    position: sticky;
+    position: fixed;
     top: 40px;
+    left: 0;
+    bottom: 0;
     z-index: 30;
     flex-shrink: 0;
     border-right: 1px solid var(--portfolio-border);
@@ -1377,6 +1382,7 @@ footer.solid-background {
     min-width: 0;
     display: flex;
     flex-direction: column;
+    margin-left: 40px;
   }
 
   .projects-page .content-area {
