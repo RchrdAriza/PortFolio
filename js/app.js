@@ -280,6 +280,12 @@ document.addEventListener("DOMContentLoaded", () => {
     navToggle.addEventListener("click", () => {
       nav.classList.toggle("nav-open");
     });
+
+    document.addEventListener("click", (event) => {
+      if (!nav.classList.contains("nav-open")) return;
+      if (nav.contains(event.target)) return;
+      nav.classList.remove("nav-open");
+    });
   }
 
   const rightSidebarToggle = document.querySelector(".right-sidebar-toggle");
