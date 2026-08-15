@@ -26,6 +26,7 @@ body {
   background: url("../imgs/fondo.jpg") no-repeat center center / cover;
   color: var(--portfolio-text);
   min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -209,11 +210,13 @@ main {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  min-height: 0;
 }
 
 .page-content {
   display: none;
   flex: 1;
+  min-height: 0;
 }
 
 .page-content.active {
@@ -317,6 +320,7 @@ main {
 .about-page {
   flex-direction: row;
   height: 100%;
+  min-height: 0;
   background-color: var(--portfolio-bg);
   overflow: hidden;
 }
@@ -480,6 +484,7 @@ main {
   flex: 1;
   display: flex;
   overflow-y: auto;
+  min-height: 0;
 }
 
 .line-numbers {
@@ -643,6 +648,7 @@ main {
 .projects-page {
   flex-direction: row;
   height: 100%;
+  min-height: 0;
   background-color: var(--portfolio-bg);
   overflow: hidden;
 }
@@ -1133,6 +1139,7 @@ footer.solid-background {
 .main-column {
   flex: 1;
   min-width: 0;
+  min-height: 0;
   display: flex;
   flex-direction: row;
 }
