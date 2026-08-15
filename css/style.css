@@ -46,51 +46,74 @@ nav {
 
 .nav-toggle {
   display: none;
+  align-items: center;
+  justify-content: center;
   background: none;
   border: none;
+  border-radius: 0;
   cursor: pointer;
-  padding: 1rem;
+  width: auto;
+  height: auto;
+  padding: 0;
+  color: var(--portfolio-text);
 }
 
-.hamburger {
-  display: block;
-  position: relative;
-  width: 24px;
-  height: 2px;
-  background: var(--portfolio-text);
-  transition: transform 0.3s ease;
+.nav-toggle svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  stroke: none;
+  transition: color 0.3s;
 }
 
-.hamburger::before,
-.hamburger::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--portfolio-text);
-  transition: transform 0.3s ease, top 0.3s ease;
+.nav-toggle:hover svg {
+  color: var(--portfolio-accent);
 }
 
-.hamburger::before {
-  top: -8px;
+.nav-open .nav-toggle {
+  background: none;
 }
 
-.hamburger::after {
-  top: 8px;
+body:has(.projects-page) .nav-toggle {
+  margin-right: 1rem;
 }
 
-.nav-open .hamburger {
-  transform: rotate(45deg);
+body:has(.about-page) .nav-actions {
+  padding-right: 1rem;
 }
 
-.nav-open .hamburger::before {
-  top: 0;
-  transform: rotate(90deg);
+.right-sidebar-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  width: auto;
+  height: auto;
+  padding: 0;
+  color: var(--portfolio-text);
 }
 
-.nav-open .hamburger::after {
-  top: 0;
+.right-sidebar-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+.right-sidebar-toggle:hover svg {
+  color: var(--portfolio-accent);
+}
+
+.right-sidebar-toggle.active {
+  background: none;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
 }
 
 .nav-brand {
@@ -428,7 +451,7 @@ main {
 
 /* Items de contacto */
 .contact-item {
-  padding: 0.5rem 1rem 0.5rem 1.5rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
   color: var(--portfolio-muted);
   font-size: 0.9rem;
   display: flex;
@@ -508,6 +531,7 @@ main {
   border-left: 1px solid var(--portfolio-border);
   padding: 2rem 1.5rem;
   overflow-y: auto;
+  transition: transform 0.35s ease, opacity 0.35s ease;
 }
 
 .right-sidebar h3 {
@@ -848,10 +872,19 @@ footer {
     overflow: visible;
   }
 
-  .nav-toggle {
-    display: block;
+  .nav-actions {
     margin-left: auto;
     order: 2;
+  }
+
+  .nav-toggle,
+  .right-sidebar-toggle {
+    display: flex;
+  }
+
+  .nav-brand {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
   }
 
   .hello-page {
@@ -907,10 +940,31 @@ footer {
     height: auto;
   }
 
-  .sidebar,
-  .right-sidebar {
+  .sidebar {
     width: 100%;
     max-height: 300px;
+  }
+
+  .right-sidebar {
+    position: fixed;
+    top: 72px;
+    right: 0;
+    bottom: 0;
+    width: min(86vw, 380px);
+    max-height: none;
+    height: calc(100vh - 72px);
+    border-left: 1px solid var(--portfolio-border);
+    border-top: 1px solid var(--portfolio-border);
+    transform: translateX(105%);
+    opacity: 0;
+    box-shadow: -12px 0 28px rgba(0, 0, 0, 0.35);
+    z-index: 60;
+  }
+
+  .right-sidebar.is-open {
+    transform: translateX(0);
+    opacity: 1;
+    background: var(--portfolio-bg);
   }
 
   .content-area {
@@ -969,8 +1023,8 @@ footer {
 
 @media (max-width: 480px) {
   .nav-brand {
-    font-size: 0.9rem;
-    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    padding: 0.5rem 0.75rem;
   }
 
   .hello-content h1 {
@@ -1072,7 +1126,7 @@ footer.solid-background {
   }
 
   .about-page .sidebar {
-    width: 48px;
+    width: 40px;
     max-height: none;
     flex-direction: column;
     padding: 0;
@@ -1089,8 +1143,8 @@ footer.solid-background {
   }
 
   .about-page .sidebar-header {
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
     padding: 0;
     justify-content: center;
     border-bottom: 1px solid var(--portfolio-border);
@@ -1120,7 +1174,7 @@ footer.solid-background {
 
   .about-page .sidebar-section > .sidebar-items {
     position: absolute;
-    left: 48px;
+    left: 40px;
     top: 0;
     bottom: 0;
     width: min(300px, 82vw);
@@ -1205,10 +1259,127 @@ footer.solid-background {
   }
 
   .about-page .right-sidebar {
-    width: 100%;
-    max-height: 40vh;
-    border-left: none;
+    width: min(86vw, 380px);
+    max-height: none;
+    border-left: 1px solid var(--portfolio-border);
     border-top: 1px solid var(--portfolio-border);
     flex-shrink: 0;
+  }
+}
+
+/* ── Projects page: Mobile IDE activity bar ──────────────────── */
+@media (max-width: 768px) {
+  /* Turn the projects layout into the same row-based IDE layout */
+  .projects-page {
+    flex-direction: row !important;
+    height: calc(100vh - 72px - 43px); /* viewport minus nav & footer */
+    overflow: hidden;
+  }
+
+  /* Thin 40px activity bar */
+  .projects-page .sidebar {
+    width: 40px;
+    max-height: none;
+    flex-direction: column;
+    padding: 0;
+    overflow: visible;
+    position: relative;
+    z-index: 30;
+    flex-shrink: 0;
+    border-right: 1px solid var(--portfolio-border);
+  }
+
+  .projects-page .sidebar-section {
+    border-bottom: none;
+    flex-shrink: 0;
+  }
+
+  /* Each header becomes a 40×40 icon button */
+  .projects-page .sidebar-header {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    justify-content: center;
+    border-bottom: 1px solid var(--portfolio-border);
+  }
+
+  /* Hide text labels and collapse arrow on mobile */
+  .projects-page .sidebar-header .icon,
+  .projects-page .sidebar-header > span:last-child {
+    display: none;
+  }
+
+  /* Show the section icon */
+  .projects-page .section-icon {
+    display: block;
+    width: 22px;
+    height: 22px;
+    color: var(--portfolio-muted);
+    transition: color 0.2s;
+  }
+
+  /* Active section highlight */
+  .projects-page .sidebar-section.section-active .sidebar-header {
+    background: rgba(67, 217, 173, 0.08);
+    border-left: 2px solid var(--portfolio-accent);
+  }
+
+  .projects-page .sidebar-section.section-active .sidebar-header .section-icon {
+    color: var(--portfolio-accent);
+  }
+
+  /* Fly-out panel */
+  .projects-page .sidebar-section > .sidebar-items {
+    position: absolute;
+    left: 40px;
+    top: 0;
+    bottom: 0;
+    width: min(280px, 78vw);
+    max-height: none;
+    overflow-y: auto;
+    display: none;
+    flex-direction: column;
+    background: rgba(1, 22, 39, 0.97);
+    border-right: 1px solid var(--portfolio-border);
+    box-shadow: 8px 0 24px rgba(0, 0, 0, 0.4);
+    scrollbar-width: thin;
+    scrollbar-color: var(--portfolio-accent) transparent;
+  }
+
+  .projects-page .sidebar-section > .sidebar-items.open {
+    display: flex;
+  }
+
+  /* Main column fills remaining width */
+  .projects-page .main-column {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .projects-page .content-area {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+  }
+
+  /* Panel toolbar (title + close button) */
+  .projects-page .sidebar-section > .sidebar-items .panel-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--portfolio-border);
+    background: rgba(1, 18, 33, 0.5);
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  /* Contacts section items visible (no collapse needed) */
+  .projects-page #contacts-section > .sidebar-items {
+    padding-top: 0.5rem;
   }
 }

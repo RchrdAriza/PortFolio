@@ -172,8 +172,10 @@ function initBackToProjects() {
   });
 }
 
-function initMobileAboutSidebar() {
-  const sidebar = document.querySelector(".about-page .sidebar");
+function initMobileIDESidebar(pageSelector) {
+  const page = document.querySelector(pageSelector);
+  if (!page) return;
+  const sidebar = page.querySelector(".sidebar");
   if (!sidebar) return;
 
   const sections = sidebar.querySelectorAll(".sidebar-section");
@@ -261,6 +263,14 @@ function initMobileAboutSidebar() {
   });
 }
 
+function initMobileAboutSidebar() {
+  initMobileIDESidebar(".about-page");
+}
+
+function initMobileProjectsSidebar() {
+  initMobileIDESidebar(".projects-page");
+}
+
 // --- Lógica de Carga de Página ---
 document.addEventListener("DOMContentLoaded", () => {
   // --- Lógica de Menú Hamburguesa (Global) ---
@@ -269,6 +279,32 @@ document.addEventListener("DOMContentLoaded", () => {
   if (navToggle) {
     navToggle.addEventListener("click", () => {
       nav.classList.toggle("nav-open");
+    });
+  }
+
+  const rightSidebarToggle = document.querySelector(".right-sidebar-toggle");
+  const rightSidebar = document.querySelector(".right-sidebar");
+  if (rightSidebarToggle && rightSidebar) {
+    const closeRightSidebar = () => {
+      rightSidebar.classList.remove("is-open");
+      rightSidebarToggle.classList.remove("active");
+    };
+
+    rightSidebarToggle.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const isOpen = rightSidebar.classList.toggle("is-open");
+      rightSidebarToggle.classList.toggle("active", isOpen);
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!rightSidebar.classList.contains("is-open")) return;
+      if (
+        rightSidebar.contains(event.target) ||
+        rightSidebarToggle.contains(event.target)
+      ) {
+        return;
+      }
+      closeRightSidebar();
     });
   }
 
@@ -315,6 +351,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   initSidebarContentSwitcher();
   initMobileAboutSidebar();
+  initMobileProjectsSidebar();
   initProjectCards();
   initProjectLinks();
   initBackToProjects();

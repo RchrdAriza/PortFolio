@@ -16,9 +16,23 @@
   <body>
     <nav>
       <a href="index.html" class="nav-brand">richard-ariza</a>
-      <button class="nav-toggle" aria-label="toggle navigation">
-        <span class="hamburger"></span>
-      </button>
+      <div class="nav-actions">
+        <button class="nav-toggle" aria-label="toggle navigation" type="button">
+          <svg
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            aria-hidden="true"
+            width="16"
+            height="16"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M1 2v12h14V2H1zm1 1h12v2H2V3zm0 3h12v7H2V6z"
+            />
+          </svg>
+        </button>
+      </div>
       <ul class="nav-links">
         <li><a href="index.html" class="active">_hello</a></li>
         <li><a href="pages/about.html">_about-me</a></li>
@@ -91,7 +105,11 @@
     <script src="js/app.js"></script>
     <!-- Vercel Web Analytics -->
     <script>
-      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+      window.va =
+        window.va ||
+        function () {
+          (window.vaq = window.vaq || []).push(arguments);
+        };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
   </body>

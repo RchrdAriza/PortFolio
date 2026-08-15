@@ -15,9 +15,23 @@
   <body>
     <nav>
       <a href="../index.html" class="nav-brand">richard-ariza</a>
-      <button class="nav-toggle" aria-label="toggle navigation">
-        <span class="hamburger"></span>
-      </button>
+      <div class="nav-actions">
+        <button class="nav-toggle" aria-label="toggle navigation" type="button">
+          <svg
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            aria-hidden="true"
+            width="16"
+            height="16"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M1 2v12h14V2H1zm1 1h12v2H2V3zm0 3h12v7H2V6z"
+            />
+          </svg>
+        </button>
+      </div>
       <ul class="nav-links">
         <li><a href="../index.html">_hello</a></li>
         <li><a href="about.html">_about-me</a></li>
@@ -30,8 +44,21 @@
       <section class="page-content projects-page active" id="projects">
         <div class="sidebar">
           <!-- Projects Section -->
-          <div class="sidebar-section">
+          <div class="sidebar-section" id="projects-section">
             <div class="sidebar-header" onclick="toggleSidebar(this)">
+              <!-- Layout icon: Files / Explorer -->
+              <svg
+                class="section-icon"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M14.5 2H9L8.65002 2.15002L8 2.79004L7.34998 2.15002L7 2H1.5L1 2.5V12.5L1.5 13H6.78998L7.65002 13.85H8.34998L9.21002 13H14.5L15 12.5V2.5L14.5 2ZM7.5 12.3199L7.32001 12.15L7 12H2V3H6.78998L7.53003 3.73999L7.5 12.3199ZM14 12H9L8.65002 12.15L8.51001 12.28V3.69995L9.21002 3H14V12ZM6 5H3V6H6V5ZM6 9H3V10H6V9ZM3 7H6V8H3V7ZM13 5H10V6H13V5ZM10 7H13V8H10V7ZM10 9H13V10H10V9Z"
+                />
+              </svg>
               <span class="icon">▼</span>
               <span>projects</span>
             </div>
@@ -267,8 +294,22 @@
           </div>
 
           <!-- Contacts Section -->
-          <div class="sidebar-section">
+          <div class="sidebar-section" id="contacts-section">
             <div class="sidebar-header" onclick="toggleSidebar(this)">
+              <!-- Layout icon: Contact / Person -->
+              <svg
+                class="section-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="8" r="4" />
+                <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+              </svg>
               <span class="icon">▼</span>
               <span>contacts</span>
             </div>
@@ -296,552 +337,565 @@
           </div>
         </div>
 
-        <div class="content-area">
-          <div class="line-numbers" id="line-numbers"></div>
-          <div class="code-content">
-            <!-- Projects Grid Panel -->
-            <div class="code-content-panel active" id="projects-grid-panel">
-              <div class="projects-grid">
-                <div class="project-card">
-                  <div class="project-image">
-                    <img
-                      src="https://res.cloudinary.com/dhqo7n9gd/image/upload/v1781233043/NOMW_owhc6y.png"
-                      alt="Vista previa de NvimOnMy_way"
-                      loading="lazy"
-                    />
+        <div class="main-column">
+          <div class="content-area">
+            <div class="line-numbers" id="line-numbers"></div>
+            <div class="code-content">
+              <!-- Projects Grid Panel -->
+              <div class="code-content-panel active" id="projects-grid-panel">
+                <div class="projects-grid">
+                  <div class="project-card">
+                    <div class="project-image">
+                      <img
+                        src="https://res.cloudinary.com/dhqo7n9gd/image/upload/v1781233043/NOMW_owhc6y.png"
+                        alt="Vista previa de NvimOnMy_way"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="card-body">
+                      <!-- <h3>project 1</h3> -->
+                      <div class="project-name">// NvimOnMy_way</div>
+                      <div class="project-stars">
+                        <svg
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                          width="12"
+                          height="12"
+                          aria-hidden="true"
+                        >
+                          <path
+                            d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                          />
+                        </svg>
+                        <span>13 stars</span>
+                      </div>
+                      <p class="project-description">
+                        Configuración personalizada de Neovim con ~50 plugins:
+                        LSP, autocompletado, árbol de archivos, formateo y más.
+                        Listo para usar con un solo comando.
+                      </p>
+                      <div class="project-tags">
+                        <span class="tag">Lua</span>
+                        <span class="tag">Neovim</span>
+                        <span class="tag">Linux</span>
+                      </div>
+                      <a
+                        class="project-link"
+                        href="https://github.com/RchrdAriza/NvimOnMy_way"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Ver NvimOnMy_way en GitHub"
+                      >
+                        <svg
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                          width="16"
+                          height="16"
+                        >
+                          <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                          />
+                        </svg>
+                        ver en github
+                      </a>
+                    </div>
                   </div>
-                  <div class="card-body">
-                    <!-- <h3>project 1</h3> -->
-                    <div class="project-name">// NvimOnMy_way</div>
-                    <div class="project-stars">
+                  <div class="project-card">
+                    <div class="project-image">
+                      <img
+                        src="https://raw.githubusercontent.com/RchrdAriza/RetroPod/refs/heads/master/assets/images/hero_readme.webp"
+                        alt="Vista previa de RetroPod"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="card-body">
+                      <!-- <h3>project 2</h3> -->
+                      <div class="project-name">// RetroPod</div>
+                      <p class="project-description">
+                        Una app reproductora de música local diseñada para
+                        capturar la esencia nostálgica del icónico iPod Classic.
+                      </p>
+                      <div class="project-tags">
+                        <span class="tag">Dart</span>
+                        <span class="tag">Flutter</span>
+                        <span class="tag">Music</span>
+                        <span class="tag">Y2K</span>
+                      </div>
+                      <a
+                        class="project-link"
+                        href="https://github.com/RchrdAriza/RetroPod"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Ver RetroPod en GitHub"
+                      >
+                        <svg
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                          width="16"
+                          height="16"
+                        >
+                          <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                          />
+                        </svg>
+                        ver en github
+                      </a>
+                    </div>
+                  </div>
+                  <div class="project-card">
+                    <div class="project-image">
+                      <img
+                        src="../imgs/retropodweb.png"
+                        alt="Vista previa de retroPodweb"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="card-body">
+                      <div class="project-name">// retroPodweb</div>
+                      <p class="project-description">
+                        La web oficial de RetroPod. Landing page nostálgica para
+                        la app reproductora de música inspirada en el iPod
+                        Classic, con temática retrowave y navegación por
+                        landmarks sonoros.
+                      </p>
+                      <div class="project-tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Retrowave</span>
+                      </div>
+                      <a
+                        class="project-link"
+                        href="https://github.com/RchrdAriza/retroPodweb"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Ver retroPodweb en GitHub"
+                      >
+                        <svg
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                          width="16"
+                          height="16"
+                        >
+                          <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                          />
+                        </svg>
+                        ver en github
+                      </a>
+                    </div>
+                  </div>
+                  <div class="project-card">
+                    <div class="project-image">
+                      <img
+                        src="https://res.cloudinary.com/dhqo7n9gd/image/upload/v1786722588/CURLMOON_tttliv.png"
+                        alt="Vista previa de curlmoon"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="card-body">
+                      <!-- <h3>project 3</h3> -->
+                      <div class="project-name">// curlmoon</div>
+                      <p class="project-description">
+                        Un Postman de bolsillo para la terminal, construido para
+                        Termux pero funciona donde Go corra. Cliente HTTP TUI de
+                        un solo binario: colecciones, entornos, helpers de auth,
+                        historial de requests y sustitución de {{variables}},
+                        todo desde el teclado.
+                      </p>
+                      <div class="project-tags">
+                        <span class="tag">Go</span>
+                        <span class="tag">TUI</span>
+                        <span class="tag">HTTP</span>
+                        <span class="tag">Termux</span>
+                      </div>
+                      <a
+                        class="project-link"
+                        href="https://github.com/RchrdAriza/curlmoon"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Ver curlmoon en GitHub"
+                      >
+                        <svg
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                          width="16"
+                          height="16"
+                        >
+                          <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                          />
+                        </svg>
+                        ver en github
+                      </a>
+                    </div>
+                  </div>
+                  <div class="project-card">
+                    <div class="project-image">
+                      <img
+                        src="https://raw.githubusercontent.com/RchrdAriza/strudel-copilot/main/public/strudel-claude.png"
+                        alt="Vista previa de strudel-copilot"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="card-body">
+                      <!-- <h3>project 4</h3> -->
+                      <div class="project-name">// strudel-copilot</div>
+                      <p class="project-description">
+                        Un experimento para tocar y aprender Strudel con Claude
+                        Code. Un entorno de live coding a pantalla completa para
+                        hacer música, construido para IA: expone APIs REST para
+                        que Claude pueda componer y controlar la música
+                        programáticamente.
+                      </p>
+                      <div class="project-tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Strudel</span>
+                        <span class="tag">Live Coding</span>
+                        <span class="tag">REST API</span>
+                      </div>
+                      <a
+                        class="project-link"
+                        href="https://github.com/RchrdAriza/strudel-copilot"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Ver strudel-copilot en GitHub"
+                      >
+                        <svg
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                          width="16"
+                          height="16"
+                        >
+                          <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                          />
+                        </svg>
+                        ver en github
+                      </a>
+                    </div>
+                  </div>
+                  <div class="project-card">
+                    <div class="project-image placeholder">
                       <svg
                         fill="currentColor"
                         viewBox="0 0 24 24"
-                        width="12"
-                        height="12"
+                        width="32"
+                        height="32"
                         aria-hidden="true"
                       >
                         <path
-                          d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+                          d="M4 5h16v14H4V5zm1 1v8l5-5 4 4 3-3 3 3V6H5zm1 1h2v2H6V7zm11 3h2v2h-2v-2zM9 15l-3 3h12l-4-5-2.5 3L9 15z"
                         />
                       </svg>
-                      <span>13 stars</span>
+                      <span>imagen del proyecto</span>
                     </div>
-                    <p class="project-description">
-                      Configuración personalizada de Neovim con ~50 plugins:
-                      LSP, autocompletado, árbol de archivos, formateo y más.
-                      Listo para usar con un solo comando.
-                    </p>
-                    <div class="project-tags">
-                      <span class="tag">Lua</span>
-                      <span class="tag">Neovim</span>
-                      <span class="tag">Linux</span>
-                    </div>
-                    <a
-                      class="project-link"
-                      href="https://github.com/RchrdAriza/NvimOnMy_way"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="Ver NvimOnMy_way en GitHub"
-                    >
-                      <svg
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                        width="16"
-                        height="16"
+                    <div class="card-body">
+                      <!-- <h3>project 5</h3> -->
+                      <div class="project-name">// AsiSena</div>
+                      <p class="project-description">
+                        Gestor de ambiente educativo y de bienestar del SENA
+                        Colombo Alemán. Sistema con 3 roles (Administrativo,
+                        Instructor, Aprendiz), dashboards personalizados, salud
+                        estudiantil con gráficas, chatbot IA con Ollama,
+                        noticias y perfil editable. Responsive Web + Mobile.
+                      </p>
+                      <div class="project-tags">
+                        <span class="tag">Dart</span>
+                        <span class="tag">Flutter</span>
+                        <span class="tag">IA</span>
+                        <span class="tag">SENA</span>
+                      </div>
+                      <a
+                        class="project-link"
+                        href="https://github.com/RchrdAriza/AsiSena"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Ver AsiSena en GitHub"
                       >
-                        <path
-                          d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-                        />
-                      </svg>
-                      ver en github
-                    </a>
-                  </div>
-                </div>
-                <div class="project-card">
-                  <div class="project-image">
-                    <img
-                      src="https://raw.githubusercontent.com/RchrdAriza/RetroPod/refs/heads/master/assets/images/hero_readme.webp"
-                      alt="Vista previa de RetroPod"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div class="card-body">
-                    <!-- <h3>project 2</h3> -->
-                    <div class="project-name">// RetroPod</div>
-                    <p class="project-description">
-                      Una app reproductora de música local diseñada para
-                      capturar la esencia nostálgica del icónico iPod Classic.
-                    </p>
-                    <div class="project-tags">
-                      <span class="tag">Dart</span>
-                      <span class="tag">Flutter</span>
-                      <span class="tag">Music</span>
-                      <span class="tag">Y2K</span>
+                        <svg
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                          width="16"
+                          height="16"
+                        >
+                          <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                          />
+                        </svg>
+                        ver en github
+                      </a>
                     </div>
-                    <a
-                      class="project-link"
-                      href="https://github.com/RchrdAriza/RetroPod"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="Ver RetroPod en GitHub"
-                    >
-                      <svg
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                        width="16"
-                        height="16"
-                      >
-                        <path
-                          d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-                        />
-                      </svg>
-                      ver en github
-                    </a>
-                  </div>
-                </div>
-                <div class="project-card">
-                  <div class="project-image">
-                    <img
-                      src="../imgs/retropodweb.png"
-                      alt="Vista previa de retroPodweb"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div class="card-body">
-                    <div class="project-name">// retroPodweb</div>
-                    <p class="project-description">
-                      La web oficial de RetroPod. Landing page nostálgica para
-                      la app reproductora de música inspirada en el iPod
-                      Classic, con temática retrowave y navegación por landmarks
-                      sonoros.
-                    </p>
-                    <div class="project-tags">
-                      <span class="tag">HTML</span>
-                      <span class="tag">CSS</span>
-                      <span class="tag">JavaScript</span>
-                      <span class="tag">Retrowave</span>
-                    </div>
-                    <a
-                      class="project-link"
-                      href="https://github.com/RchrdAriza/retroPodweb"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="Ver retroPodweb en GitHub"
-                    >
-                      <svg
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                        width="16"
-                        height="16"
-                      >
-                        <path
-                          d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-                        />
-                      </svg>
-                      ver en github
-                    </a>
-                  </div>
-                </div>
-                <div class="project-card">
-                  <div class="project-image">
-                    <img
-                      src="https://res.cloudinary.com/dhqo7n9gd/image/upload/v1786722588/CURLMOON_tttliv.png"
-                      alt="Vista previa de curlmoon"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div class="card-body">
-                    <!-- <h3>project 3</h3> -->
-                    <div class="project-name">// curlmoon</div>
-                    <p class="project-description">
-                      Un Postman de bolsillo para la terminal, construido para
-                      Termux pero funciona donde Go corra. Cliente HTTP TUI de
-                      un solo binario: colecciones, entornos, helpers de auth,
-                      historial de requests y sustitución de {{variables}}, todo
-                      desde el teclado.
-                    </p>
-                    <div class="project-tags">
-                      <span class="tag">Go</span>
-                      <span class="tag">TUI</span>
-                      <span class="tag">HTTP</span>
-                      <span class="tag">Termux</span>
-                    </div>
-                    <a
-                      class="project-link"
-                      href="https://github.com/RchrdAriza/curlmoon"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="Ver curlmoon en GitHub"
-                    >
-                      <svg
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                        width="16"
-                        height="16"
-                      >
-                        <path
-                          d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-                        />
-                      </svg>
-                      ver en github
-                    </a>
-                  </div>
-                </div>
-                <div class="project-card">
-                  <div class="project-image">
-                    <img
-                      src="https://raw.githubusercontent.com/RchrdAriza/strudel-copilot/main/public/strudel-claude.png"
-                      alt="Vista previa de strudel-copilot"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div class="card-body">
-                    <!-- <h3>project 4</h3> -->
-                    <div class="project-name">// strudel-copilot</div>
-                    <p class="project-description">
-                      Un experimento para tocar y aprender Strudel con Claude
-                      Code. Un entorno de live coding a pantalla completa para
-                      hacer música, construido para IA: expone APIs REST para
-                      que Claude pueda componer y controlar la música
-                      programáticamente.
-                    </p>
-                    <div class="project-tags">
-                      <span class="tag">JavaScript</span>
-                      <span class="tag">Strudel</span>
-                      <span class="tag">Live Coding</span>
-                      <span class="tag">REST API</span>
-                    </div>
-                    <a
-                      class="project-link"
-                      href="https://github.com/RchrdAriza/strudel-copilot"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="Ver strudel-copilot en GitHub"
-                    >
-                      <svg
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                        width="16"
-                        height="16"
-                      >
-                        <path
-                          d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-                        />
-                      </svg>
-                      ver en github
-                    </a>
-                  </div>
-                </div>
-                <div class="project-card">
-                  <div class="project-image placeholder">
-                    <svg
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      width="32"
-                      height="32"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M4 5h16v14H4V5zm1 1v8l5-5 4 4 3-3 3 3V6H5zm1 1h2v2H6V7zm11 3h2v2h-2v-2zM9 15l-3 3h12l-4-5-2.5 3L9 15z"
-                      />
-                    </svg>
-                    <span>imagen del proyecto</span>
-                  </div>
-                  <div class="card-body">
-                    <!-- <h3>project 5</h3> -->
-                    <div class="project-name">// AsiSena</div>
-                    <p class="project-description">
-                      Gestor de ambiente educativo y de bienestar del SENA
-                      Colombo Alemán. Sistema con 3 roles (Administrativo,
-                      Instructor, Aprendiz), dashboards personalizados, salud
-                      estudiantil con gráficas, chatbot IA con Ollama, noticias
-                      y perfil editable. Responsive Web + Mobile.
-                    </p>
-                    <div class="project-tags">
-                      <span class="tag">Dart</span>
-                      <span class="tag">Flutter</span>
-                      <span class="tag">IA</span>
-                      <span class="tag">SENA</span>
-                    </div>
-                    <a
-                      class="project-link"
-                      href="https://github.com/RchrdAriza/AsiSena"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="Ver AsiSena en GitHub"
-                    >
-                      <svg
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                        width="16"
-                        height="16"
-                      >
-                        <path
-                          d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-                        />
-                      </svg>
-                      ver en github
-                    </a>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- NvimOnMy_way Readme Panel -->
-            <div class="code-content-panel" id="nvim-readme-panel">
-              <p><span class="code-comment">/**</span></p>
-              <p><span class="code-comment"> * @file README.md</span></p>
-              <p><span class="code-comment"> * @project NvimOnMy_way</span></p>
-              <p>
-                <span class="code-comment">
-                  * @description Configuración personalizada de Neovim con ~50
-                  plugins.</span
-                >
-              </p>
-              <p><span class="code-comment"> */</span></p>
-              <p></p>
-              <p><span class="code-keyword">const</span> config = {</p>
-              <p>name: <span class="code-string">"NvimOnMy_way"</span>,</p>
-              <p>type: <span class="code-string">"Neovim Config"</span>,</p>
-              <p>language: <span class="code-string">"Lua"</span>,</p>
-              <p>requirements: [</p>
-              <p><span class="code-string">"Python & pip"</span>,</p>
-              <p><span class="code-string">"Neovim >= 0.12.0"</span>,</p>
-              <p><span class="code-string">"nerdfonts"</span>,</p>
-              <p><span class="code-string">"NodeJS & tree-sitter-cli"</span></p>
-              <p>],</p>
-              <p>
-                installation:
-                <span class="code-string"
-                  >"git clone https://github.com/RchrdAriza/NvimOnMy_way
-                  ~/.config/nvim"</span
-                >,
-              </p>
-              <p>keymaps: {</p>
-              <p>leader: <span class="code-string">"Space"</span></p>
-              <p>},</p>
-              <p>plugins: [</p>
-              <p>
-                <span class="code-string">"lazy.nvim (Package Manager)"</span>,
-              </p>
-              <p>
-                <span class="code-string">"neo-tree (File Explorer)"</span>,
-              </p>
-              <p>
-                <span class="code-string">"nvim-lspconfig & mason (LSP)"</span>,
-              </p>
-              <p><span class="code-string">"nvim-cmp (Completion)"</span>,</p>
-              <p>
-                <span class="code-string">"Tokyo-night (Colorscheme)"</span>
-              </p>
-              <p>]</p>
-              <p>};</p>
-            </div>
+              <!-- NvimOnMy_way Readme Panel -->
+              <div class="code-content-panel" id="nvim-readme-panel">
+                <p><span class="code-comment">/**</span></p>
+                <p><span class="code-comment"> * @file README.md</span></p>
+                <p>
+                  <span class="code-comment"> * @project NvimOnMy_way</span>
+                </p>
+                <p>
+                  <span class="code-comment">
+                    * @description Configuración personalizada de Neovim con ~50
+                    plugins.</span
+                  >
+                </p>
+                <p><span class="code-comment"> */</span></p>
+                <p></p>
+                <p><span class="code-keyword">const</span> config = {</p>
+                <p>name: <span class="code-string">"NvimOnMy_way"</span>,</p>
+                <p>type: <span class="code-string">"Neovim Config"</span>,</p>
+                <p>language: <span class="code-string">"Lua"</span>,</p>
+                <p>requirements: [</p>
+                <p><span class="code-string">"Python & pip"</span>,</p>
+                <p><span class="code-string">"Neovim >= 0.12.0"</span>,</p>
+                <p><span class="code-string">"nerdfonts"</span>,</p>
+                <p>
+                  <span class="code-string">"NodeJS & tree-sitter-cli"</span>
+                </p>
+                <p>],</p>
+                <p>
+                  installation:
+                  <span class="code-string"
+                    >"git clone https://github.com/RchrdAriza/NvimOnMy_way
+                    ~/.config/nvim"</span
+                  >,
+                </p>
+                <p>keymaps: {</p>
+                <p>leader: <span class="code-string">"Space"</span></p>
+                <p>},</p>
+                <p>plugins: [</p>
+                <p>
+                  <span class="code-string">"lazy.nvim (Package Manager)"</span
+                  >,
+                </p>
+                <p>
+                  <span class="code-string">"neo-tree (File Explorer)"</span>,
+                </p>
+                <p>
+                  <span class="code-string">"nvim-lspconfig & mason (LSP)"</span
+                  >,
+                </p>
+                <p><span class="code-string">"nvim-cmp (Completion)"</span>,</p>
+                <p>
+                  <span class="code-string">"Tokyo-night (Colorscheme)"</span>
+                </p>
+                <p>]</p>
+                <p>};</p>
+              </div>
 
-            <!-- curlmoon Readme Panel -->
-            <div class="code-content-panel" id="curlmoon-readme-panel">
-              <p><span class="code-comment">/**</span></p>
-              <p><span class="code-comment"> * @file README.md</span></p>
-              <p><span class="code-comment"> * @project curlmoon</span></p>
-              <p>
-                <span class="code-comment">
-                  * @description A pocket-sized Postman for the terminal — built
-                  for Termux, but it runs anywhere Go does.</span
-                >
-              </p>
-              <p><span class="code-comment"> */</span></p>
-              <p></p>
-              <p><span class="code-keyword">const</span> curlmoon = {</p>
-              <p>name: <span class="code-string">"curlmoon"</span>,</p>
-              <p>type: <span class="code-string">"TUI HTTP Client"</span>,</p>
-              <p>language: <span class="code-string">"Go"</span>,</p>
-              <p>binary: <span class="code-string">"single-binary"</span>,</p>
-              <p>features: [</p>
-              <p><span class="code-string">"Collections"</span>,</p>
-              <p><span class="code-string">"Environments"</span>,</p>
-              <p><span class="code-string">"Auth helpers"</span>,</p>
-              <p><span class="code-string">"Request history"</span>,</p>
-              <p>
-                <span class="code-string">"{{variable}} substitution"</span>
-              </p>
-              <p>],</p>
-              <p>
-                input:
-                <span class="code-string"
-                  >"keyboard-driven, no mouse required"</span
-                >,
-              </p>
-              <p>
-                runs:
-                <span class="code-string">"Termux & anywhere Go does"</span>
-              </p>
-              <p>};</p>
-            </div>
+              <!-- curlmoon Readme Panel -->
+              <div class="code-content-panel" id="curlmoon-readme-panel">
+                <p><span class="code-comment">/**</span></p>
+                <p><span class="code-comment"> * @file README.md</span></p>
+                <p><span class="code-comment"> * @project curlmoon</span></p>
+                <p>
+                  <span class="code-comment">
+                    * @description A pocket-sized Postman for the terminal —
+                    built for Termux, but it runs anywhere Go does.</span
+                  >
+                </p>
+                <p><span class="code-comment"> */</span></p>
+                <p></p>
+                <p><span class="code-keyword">const</span> curlmoon = {</p>
+                <p>name: <span class="code-string">"curlmoon"</span>,</p>
+                <p>type: <span class="code-string">"TUI HTTP Client"</span>,</p>
+                <p>language: <span class="code-string">"Go"</span>,</p>
+                <p>binary: <span class="code-string">"single-binary"</span>,</p>
+                <p>features: [</p>
+                <p><span class="code-string">"Collections"</span>,</p>
+                <p><span class="code-string">"Environments"</span>,</p>
+                <p><span class="code-string">"Auth helpers"</span>,</p>
+                <p><span class="code-string">"Request history"</span>,</p>
+                <p>
+                  <span class="code-string">"{{variable}} substitution"</span>
+                </p>
+                <p>],</p>
+                <p>
+                  input:
+                  <span class="code-string"
+                    >"keyboard-driven, no mouse required"</span
+                  >,
+                </p>
+                <p>
+                  runs:
+                  <span class="code-string">"Termux & anywhere Go does"</span>
+                </p>
+                <p>};</p>
+              </div>
 
-            <!-- strudel-copilot Readme Panel -->
-            <div class="code-content-panel" id="strudel-readme-panel">
-              <p><span class="code-comment">/**</span></p>
-              <p><span class="code-comment"> * @file README.md</span></p>
-              <p>
-                <span class="code-comment"> * @project strudel-copilot</span>
-              </p>
-              <p>
-                <span class="code-comment">
-                  * @description An experiment to play and learn Strudel with
-                  Claude Code.</span
-                >
-              </p>
-              <p><span class="code-comment"> */</span></p>
-              <p></p>
-              <p><span class="code-keyword">const</span> strudel = {</p>
-              <p>name: <span class="code-string">"strudel-copilot"</span>,</p>
-              <p>
-                type:
-                <span class="code-string">"Live Coding Environment"</span>,
-              </p>
-              <p>
-                aim:
-                <span class="code-string">"AI-driven music composition"</span>,
-              </p>
-              <p>
-                size: <span class="code-string">"minimal, full-screen"</span>,
-              </p>
-              <p>stack: [</p>
-              <p><span class="code-string">"Strudel"</span>,</p>
-              <p><span class="code-string">"REST API"</span>,</p>
-              <p><span class="code-string">"JavaScript"</span></p>
-              <p>],</p>
-              <p>features: [</p>
-              <p>
-                <span class="code-string"
-                  >"Compose music programmatically via API"</span
-                >,
-              </p>
-              <p>
-                <span class="code-string"
-                  >"Claude Code controls the music"</span
-                >
-              </p>
-              <p>]</p>
-              <p>};</p>
-            </div>
+              <!-- strudel-copilot Readme Panel -->
+              <div class="code-content-panel" id="strudel-readme-panel">
+                <p><span class="code-comment">/**</span></p>
+                <p><span class="code-comment"> * @file README.md</span></p>
+                <p>
+                  <span class="code-comment"> * @project strudel-copilot</span>
+                </p>
+                <p>
+                  <span class="code-comment">
+                    * @description An experiment to play and learn Strudel with
+                    Claude Code.</span
+                  >
+                </p>
+                <p><span class="code-comment"> */</span></p>
+                <p></p>
+                <p><span class="code-keyword">const</span> strudel = {</p>
+                <p>name: <span class="code-string">"strudel-copilot"</span>,</p>
+                <p>
+                  type:
+                  <span class="code-string">"Live Coding Environment"</span>,
+                </p>
+                <p>
+                  aim:
+                  <span class="code-string">"AI-driven music composition"</span
+                  >,
+                </p>
+                <p>
+                  size: <span class="code-string">"minimal, full-screen"</span>,
+                </p>
+                <p>stack: [</p>
+                <p><span class="code-string">"Strudel"</span>,</p>
+                <p><span class="code-string">"REST API"</span>,</p>
+                <p><span class="code-string">"JavaScript"</span></p>
+                <p>],</p>
+                <p>features: [</p>
+                <p>
+                  <span class="code-string"
+                    >"Compose music programmatically via API"</span
+                  >,
+                </p>
+                <p>
+                  <span class="code-string"
+                    >"Claude Code controls the music"</span
+                  >
+                </p>
+                <p>]</p>
+                <p>};</p>
+              </div>
 
-            <!-- RetroPod Readme Panel -->
-            <div class="code-content-panel" id="retropod-readme-panel">
-              <p><span class="code-comment">/**</span></p>
-              <p><span class="code-comment"> * @file README.md</span></p>
-              <p><span class="code-comment"> * @project RetroPod</span></p>
-              <p>
-                <span class="code-comment">
-                  * @description A local music player app designed to capture
-                  the nostalgic essence of the iconic iPod Classic.</span
-                >
-              </p>
-              <p><span class="code-comment"> */</span></p>
-              <p></p>
-              <p><span class="code-keyword">const</span> retropod = {</p>
-              <p>name: <span class="code-string">"RetroPod"</span>,</p>
-              <p>
-                type: <span class="code-string">"Local Music Player"</span>,
-              </p>
-              <p>stack: [</p>
-              <p><span class="code-string">"Dart"</span>,</p>
-              <p><span class="code-string">"Flutter"</span></p>
-              <p>],</p>
-              <p>inspiration: [</p>
-              <p><span class="code-string">"iPod Classic"</span>,</p>
-              <p><span class="code-string">"Nostalgia"</span></p>
-              <p>],</p>
-              <p>
-                audio: <span class="code-string">"local only, no cloud"</span>
-              </p>
-              <p>};</p>
-            </div>
+              <!-- RetroPod Readme Panel -->
+              <div class="code-content-panel" id="retropod-readme-panel">
+                <p><span class="code-comment">/**</span></p>
+                <p><span class="code-comment"> * @file README.md</span></p>
+                <p><span class="code-comment"> * @project RetroPod</span></p>
+                <p>
+                  <span class="code-comment">
+                    * @description A local music player app designed to capture
+                    the nostalgic essence of the iconic iPod Classic.</span
+                  >
+                </p>
+                <p><span class="code-comment"> */</span></p>
+                <p></p>
+                <p><span class="code-keyword">const</span> retropod = {</p>
+                <p>name: <span class="code-string">"RetroPod"</span>,</p>
+                <p>
+                  type: <span class="code-string">"Local Music Player"</span>,
+                </p>
+                <p>stack: [</p>
+                <p><span class="code-string">"Dart"</span>,</p>
+                <p><span class="code-string">"Flutter"</span></p>
+                <p>],</p>
+                <p>inspiration: [</p>
+                <p><span class="code-string">"iPod Classic"</span>,</p>
+                <p><span class="code-string">"Nostalgia"</span></p>
+                <p>],</p>
+                <p>
+                  audio: <span class="code-string">"local only, no cloud"</span>
+                </p>
+                <p>};</p>
+              </div>
 
-            <!-- retroPodweb Readme Panel -->
-            <div class="code-content-panel" id="retropodweb-readme-panel">
-              <p><span class="code-comment">/**</span></p>
-              <p><span class="code-comment"> * @file README.md</span></p>
-              <p><span class="code-comment"> * @project retroPodweb</span></p>
-              <p>
-                <span class="code-comment">
-                  * @description The official RetroPod website — a nostalgic
-                  landing page for the iPod Classic-inspired music app.</span
-                >
-              </p>
-              <p><span class="code-comment"> */</span></p>
-              <p></p>
-              <p><span class="code-keyword">const</span> retroPodweb = {</p>
-              <p>name: <span class="code-string">"retroPodweb"</span>,</p>
-              <p>type: <span class="code-string">"Landing Page"</span>,</p>
-              <p>stack: [</p>
-              <p><span class="code-string">"HTML"</span>,</p>
-              <p><span class="code-string">"CSS"</span>,</p>
-              <p><span class="code-string">"JavaScript"</span></p>
-              <p>],</p>
-              <p>theme: <span class="code-string">"Retrowave Y2K"</span>,</p>
-              <p>features: [</p>
-              <p><span class="code-string">"Landmarks sonoros"</span>,</p>
-              <p>
-                <span class="code-string">"Promo de la app RetroPod"</span>,
-              </p>
-              <p><span class="code-string">"Estética nostalgic"</span></p>
-              <p>]</p>
-              <p>};</p>
-            </div>
+              <!-- retroPodweb Readme Panel -->
+              <div class="code-content-panel" id="retropodweb-readme-panel">
+                <p><span class="code-comment">/**</span></p>
+                <p><span class="code-comment"> * @file README.md</span></p>
+                <p><span class="code-comment"> * @project retroPodweb</span></p>
+                <p>
+                  <span class="code-comment">
+                    * @description The official RetroPod website — a nostalgic
+                    landing page for the iPod Classic-inspired music app.</span
+                  >
+                </p>
+                <p><span class="code-comment"> */</span></p>
+                <p></p>
+                <p><span class="code-keyword">const</span> retroPodweb = {</p>
+                <p>name: <span class="code-string">"retroPodweb"</span>,</p>
+                <p>type: <span class="code-string">"Landing Page"</span>,</p>
+                <p>stack: [</p>
+                <p><span class="code-string">"HTML"</span>,</p>
+                <p><span class="code-string">"CSS"</span>,</p>
+                <p><span class="code-string">"JavaScript"</span></p>
+                <p>],</p>
+                <p>theme: <span class="code-string">"Retrowave Y2K"</span>,</p>
+                <p>features: [</p>
+                <p><span class="code-string">"Landmarks sonoros"</span>,</p>
+                <p>
+                  <span class="code-string">"Promo de la app RetroPod"</span>,
+                </p>
+                <p><span class="code-string">"Estética nostalgic"</span></p>
+                <p>]</p>
+                <p>};</p>
+              </div>
 
-            <!-- AsiSena Readme Panel -->
-            <div class="code-content-panel" id="asisena-readme-panel">
-              <p><span class="code-comment">/**</span></p>
-              <p><span class="code-comment"> * @file README.md</span></p>
-              <p><span class="code-comment"> * @project AsiSena</span></p>
-              <p>
-                <span class="code-comment">
-                  * @description Gestor de ambiente educativo y de bienestar del
-                  SENA Colombo Alemán.</span
-                >
-              </p>
-              <p><span class="code-comment"> */</span></p>
-              <p></p>
-              <p><span class="code-keyword">const</span> asisena = {</p>
-              <p>name: <span class="code-string">"AsiSena"</span>,</p>
-              <p>
-                type: <span class="code-string">"Educational Manager"</span>,
-              </p>
-              <p>stack: [</p>
-              <p><span class="code-string">"Dart"</span>,</p>
-              <p><span class="code-string">"Flutter"</span>,</p>
-              <p><span class="code-string">"fl_chart"</span>,</p>
-              <p><span class="code-string">"Ollama (gemma3:4b)"</span></p>
-              <p>],</p>
-              <p>roles: [</p>
-              <p><span class="code-string">"Administrativo"</span>,</p>
-              <p><span class="code-string">"Instructor"</span>,</p>
-              <p><span class="code-string">"Aprendiz"</span></p>
-              <p>],</p>
-              <p>features: [</p>
-              <p><span class="code-string">"Auth con 3 roles"</span>,</p>
-              <p>
-                <span class="code-string"
-                  >"Dashboards personalizados por rol"</span
-                >,
-              </p>
-              <p>
-                <span class="code-string">"Salud estudiantil con gráficas"</span
-                >,
-              </p>
-              <p><span class="code-string">"Chatbot IA con Ollama"</span>,</p>
-              <p>
-                <span class="code-string">"Noticias institucionales"</span>,
-              </p>
-              <p><span class="code-string">"Perfil editable"</span></p>
-              <p>],</p>
-              <p>responsive: <span class="code-string">"Web + Mobile"</span></p>
-              <p>};</p>
+              <!-- AsiSena Readme Panel -->
+              <div class="code-content-panel" id="asisena-readme-panel">
+                <p><span class="code-comment">/**</span></p>
+                <p><span class="code-comment"> * @file README.md</span></p>
+                <p><span class="code-comment"> * @project AsiSena</span></p>
+                <p>
+                  <span class="code-comment">
+                    * @description Gestor de ambiente educativo y de bienestar
+                    del SENA Colombo Alemán.</span
+                  >
+                </p>
+                <p><span class="code-comment"> */</span></p>
+                <p></p>
+                <p><span class="code-keyword">const</span> asisena = {</p>
+                <p>name: <span class="code-string">"AsiSena"</span>,</p>
+                <p>
+                  type: <span class="code-string">"Educational Manager"</span>,
+                </p>
+                <p>stack: [</p>
+                <p><span class="code-string">"Dart"</span>,</p>
+                <p><span class="code-string">"Flutter"</span>,</p>
+                <p><span class="code-string">"fl_chart"</span>,</p>
+                <p><span class="code-string">"Ollama (gemma3:4b)"</span></p>
+                <p>],</p>
+                <p>roles: [</p>
+                <p><span class="code-string">"Administrativo"</span>,</p>
+                <p><span class="code-string">"Instructor"</span>,</p>
+                <p><span class="code-string">"Aprendiz"</span></p>
+                <p>],</p>
+                <p>features: [</p>
+                <p><span class="code-string">"Auth con 3 roles"</span>,</p>
+                <p>
+                  <span class="code-string"
+                    >"Dashboards personalizados por rol"</span
+                  >,
+                </p>
+                <p>
+                  <span class="code-string"
+                    >"Salud estudiantil con gráficas"</span
+                  >,
+                </p>
+                <p><span class="code-string">"Chatbot IA con Ollama"</span>,</p>
+                <p>
+                  <span class="code-string">"Noticias institucionales"</span>,
+                </p>
+                <p><span class="code-string">"Perfil editable"</span></p>
+                <p>],</p>
+                <p>
+                  responsive: <span class="code-string">"Web + Mobile"</span>
+                </p>
+                <p>};</p>
+              </div>
             </div>
           </div>
         </div>
+        <!-- /.main-column -->
       </section>
     </main>
 
