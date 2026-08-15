@@ -79,14 +79,6 @@ body:has(.projects-page) .nav-toggle {
   margin-right: 1rem;
 }
 
-body:has(.about-page) .nav-actions {
-  padding-right: 1rem;
-}
-
-body:has(#hello) .nav-actions {
-  padding-right: 1rem;
-}
-
 .right-sidebar-toggle {
   display: none;
   align-items: center;
@@ -893,6 +885,11 @@ footer {
   .nav-actions {
     margin-left: auto;
     order: 2;
+  }
+
+  body:has(.about-page) .nav-actions,
+  body:has(#hello) .nav-actions {
+    padding-right: 1rem;
   }
 
   .nav-toggle,
