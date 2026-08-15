@@ -135,6 +135,50 @@ function initProjectCards() {
   });
 }
 
+function initProjectStars() {
+  const starBlocks = document.querySelectorAll(".project-stars[data-repo]");
+  starBlocks.forEach((block) => {
+    const repo = block.getAttribute("data-repo");
+    const span = block.querySelector("span");
+    if (!repo || !span) return;
+
+    const cacheKey = `repo-stars-${repo}`;
+    const cached = (() => {
+      try {
+        return JSON.parse(localStorage.getItem(cacheKey));
+      } catch {
+        return null;
+      }
+    })();
+
+    if (cached && Date.now() - cached.fetchedAt < 60 * 60 * 1000) {
+      span.textContent = formatStars(cached.count);
+      return;
+    }
+
+    fetch(`https://api.github.com/repos/${repo}`)
+      .then((res) => {
+        if (!res.ok) throw new Error("fetch failed");
+        return res.json();
+      })
+      .then((data) => {
+        const count = data.stargazers_count || 0;
+        span.textContent = formatStars(count);
+        try {
+          localStorage.setItem(
+            cacheKey,
+            JSON.stringify({ count, fetchedAt: Date.now() })
+          );
+        } catch {}
+      })
+      .catch(() => {});
+  });
+}
+
+function formatStars(count) {
+  return `${count} ${count === 1 ? "star" : "stars"}`;
+}
+
 function initProjectLinks() {
   const links = document.querySelectorAll(".project-link");
   links.forEach((link) => {
@@ -359,6 +403,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initMobileAboutSidebar();
   initMobileProjectsSidebar();
   initProjectCards();
+  initProjectStars();
   initProjectLinks();
   initBackToProjects();
   updateLineNumbers();
