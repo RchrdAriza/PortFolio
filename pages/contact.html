@@ -18,6 +18,7 @@
       <div class="nav-actions">
         <button class="nav-toggle" aria-label="toggle navigation" type="button">
           <svg
+            class="icon-collapsed"
             viewBox="0 0 16 16"
             fill="currentColor"
             aria-hidden="true"
@@ -30,14 +31,31 @@
               d="M1 2v12h14V2H1zm1 1h12v2H2V3zm0 3h12v7H2V6z"
             />
           </svg>
+          <svg
+            class="icon-open"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            aria-hidden="true"
+            width="16"
+            height="16"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M1 2v12h14V2H1zm1 1h12v2H2V3zm0 3h12v7H2V6z"
+            />
+            <rect x="2" y="3" width="12" height="2" fill="currentColor" opacity="0.85" />
+          </svg>
         </button>
       </div>
       <ul class="nav-links">
         <li><a href="../index.html">_hello</a></li>
         <li><a href="about.html">_about-me</a></li>
         <li><a href="projects.html">_projects</a></li>
+        <li class="nav-contact-item">
+          <a href="contact.html" class="nav-contact active">_contact-me</a>
+        </li>
       </ul>
-      <a href="contact.html" class="nav-contact active">_contact-me</a>
     </nav>
 
     <main>

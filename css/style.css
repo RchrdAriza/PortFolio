@@ -75,6 +75,22 @@ nav {
   background: none;
 }
 
+.nav-toggle .icon-collapsed {
+  display: block;
+}
+
+.nav-toggle .icon-open {
+  display: none;
+}
+
+.nav-open .nav-toggle .icon-collapsed {
+  display: none;
+}
+
+.nav-open .nav-toggle .icon-open {
+  display: block;
+}
+
 body:has(.projects-page) .nav-toggle {
   margin-right: 1rem;
 }
@@ -104,6 +120,22 @@ body:has(.projects-page) .nav-toggle {
 
 .right-sidebar-toggle.active {
   background: none;
+}
+
+.right-sidebar-toggle .icon-collapsed {
+  display: block;
+}
+
+.right-sidebar-toggle .icon-open {
+  display: none;
+}
+
+.right-sidebar-toggle.active .icon-collapsed {
+  display: none;
+}
+
+.right-sidebar-toggle.active .icon-open {
+  display: block;
 }
 
 .nav-actions {
@@ -159,8 +191,12 @@ body:has(.projects-page) .nav-toggle {
   animation: slideIn 0.3s ease;
 }
 
-.nav-contact {
+.nav-contact-item {
   margin-left: auto;
+}
+
+.nav-contact {
+  display: block;
   padding: 1rem 1.5rem;
   color: var(--portfolio-muted);
   text-decoration: none;
@@ -907,7 +943,7 @@ footer {
   }
 
   .nav-contact {
-    display: none;
+    border-left: none;
   }
 
   .nav-links {
