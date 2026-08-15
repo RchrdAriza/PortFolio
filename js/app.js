@@ -27,28 +27,40 @@ function toggleSidebar(header) {
   }
 }
 
-// Genera los números de línea dinámicamente según las <p> del panel activo
+// Genera los números de línea junto a cada texto del panel activo.
 function updateLineNumbers() {
   const lineNumbersEl = document.getElementById("line-numbers");
   const activePanel = document.querySelector(".code-content-panel.active");
-  if (!lineNumbersEl || !activePanel) return;
+  if (!activePanel) return;
 
-  // Ocultar números de línea si es el panel de la cuadrícula de proyectos
-  if (activePanel.id === "projects-grid-panel") {
+  if (lineNumbersEl) {
     lineNumbersEl.style.display = "none";
-  } else {
-    lineNumbersEl.style.display = "flex";
+    lineNumbersEl.innerHTML = "";
   }
 
-  const lineCount = activePanel.querySelectorAll("p").length;
-  lineNumbersEl.innerHTML = "";
-  for (let i = 1; i <= lineCount; i++) {
-    const div = document.createElement("div");
-    div.textContent = i;
-    lineNumbersEl.appendChild(div);
-  }
+  if (activePanel.id === "projects-grid-panel") return;
 
-  // Sincroniza el scroll del contenido con los números de línea
+  const paragraphs = Array.from(activePanel.querySelectorAll("p"));
+  if (!paragraphs.length) return;
+
+  activePanel.innerHTML = "";
+
+  paragraphs.forEach((paragraph, index) => {
+    const row = document.createElement("div");
+    row.className = "code-line";
+
+    const number = document.createElement("span");
+    number.className = "code-line-number";
+    number.textContent = index + 1;
+
+    const text = document.createElement("span");
+    text.className = "code-line-text";
+    text.innerHTML = paragraph.innerHTML;
+
+    row.append(number, text);
+    activePanel.appendChild(row);
+  });
+
   const codeContent = document.querySelector(".code-content");
   const contentArea = document.querySelector(".content-area");
   if (codeContent && contentArea) {
@@ -160,6 +172,95 @@ function initBackToProjects() {
   });
 }
 
+function initMobileAboutSidebar() {
+  const sidebar = document.querySelector(".about-page .sidebar");
+  if (!sidebar) return;
+
+  const sections = sidebar.querySelectorAll(".sidebar-section");
+  const mq = window.matchMedia("(max-width: 768px)");
+
+  function closeAll() {
+    sections.forEach((section) => {
+      section.classList.remove("section-active");
+      const items = section.querySelector(":scope > .sidebar-items");
+      if (items) items.classList.remove("open");
+    });
+  }
+
+  function buildToolbar(section) {
+    const items = section.querySelector(":scope > .sidebar-items");
+    if (!items || items.querySelector(":scope > .panel-toolbar")) return;
+
+    const toolbar = document.createElement("div");
+    toolbar.className = "panel-toolbar";
+
+    const title = document.createElement("span");
+    title.className = "panel-title";
+    const label = section.querySelector(
+      ":scope > .sidebar-header > span:not(.icon)"
+    );
+    title.textContent = label ? label.textContent : "";
+
+    const close = document.createElement("button");
+    close.className = "panel-close";
+    close.setAttribute("type", "button");
+    close.setAttribute("aria-label", "close panel");
+    close.textContent = "×";
+    close.addEventListener("click", closeAll);
+
+    toolbar.append(title, close);
+    items.prepend(toolbar);
+  }
+
+  function openSection(section) {
+    closeAll();
+    buildToolbar(section);
+    section.classList.add("section-active");
+    const items = section.querySelector(":scope > .sidebar-items");
+    if (items) items.classList.add("open");
+  }
+
+  function wireMobile() {
+    sections.forEach((section) => {
+      const header = section.querySelector(":scope > .sidebar-header");
+      header.onclick = () => {
+        if (section.classList.contains("section-active")) {
+          closeAll();
+        } else {
+          openSection(section);
+        }
+      };
+    });
+  }
+
+  function wireDesktop() {
+    sections.forEach((section) => {
+      const header = section.querySelector(":scope > .sidebar-header");
+      header.onclick = () => toggleSidebar(header);
+      section.classList.remove("section-active");
+      const items = section.querySelector(":scope > .sidebar-items");
+      if (items) items.classList.remove("open");
+    });
+  }
+
+  function handleChange() {
+    if (mq.matches) {
+      wireMobile();
+    } else {
+      wireDesktop();
+    }
+  }
+
+  handleChange();
+  mq.addEventListener("change", handleChange);
+
+  document.addEventListener("click", (event) => {
+    if (!mq.matches) return;
+    if (sidebar.contains(event.target)) return;
+    closeAll();
+  });
+}
+
 // --- Lógica de Carga de Página ---
 document.addEventListener("DOMContentLoaded", () => {
   // --- Lógica de Menú Hamburguesa (Global) ---
@@ -213,6 +314,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const mainElement = document.querySelector("main"); // El <main> que contiene tus .page-content
 
   initSidebarContentSwitcher();
+  initMobileAboutSidebar();
   initProjectCards();
   initProjectLinks();
   initBackToProjects();
