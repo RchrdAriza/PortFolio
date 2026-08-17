@@ -39,6 +39,7 @@ function updateLineNumbers() {
   }
 
   if (activePanel.id === "projects-grid-panel") return;
+  if (activePanel.classList.contains("markdown-panel")) return;
 
   const paragraphs = Array.from(activePanel.querySelectorAll("p"));
   if (!paragraphs.length) return;
@@ -88,6 +89,7 @@ function initSidebarContentSwitcher() {
 
       item.classList.add("active");
       targetPanel.classList.add("active");
+      loadReadmeIfNeeded(targetPanel);
       updateLineNumbers();
     });
   });
@@ -177,6 +179,189 @@ function initProjectStars() {
 
 function formatStars(count) {
   return `${count} ${count === 1 ? "star" : "stars"}`;
+}
+
+// Estado de carga por repo para evitar peticiones duplicadas
+const readmeLoadState = new Map();
+
+function loadReadmeIfNeeded(panel) {
+  const container = panel.querySelector(".markdown-body[data-repo]");
+  if (!container) return;
+  const repo = container.getAttribute("data-repo");
+  if (!repo || readmeLoadState.get(repo)) return;
+  readmeLoadState.set(repo, true);
+  loadReadmeInto(container, repo);
+}
+
+async function loadReadmeInto(container, repo) {
+  const cacheKey = `readme-${repo}`;
+  const cached = (() => {
+    try {
+      return JSON.parse(localStorage.getItem(cacheKey));
+    } catch {
+      return null;
+    }
+  })();
+
+  // Cache de 12 horas para no golpear la API de GitHub
+  if (cached && Date.now() - cached.fetchedAt < 12 * 60 * 60 * 1000) {
+    container.innerHTML = cached.html;
+    postProcessReadme(container, repo);
+    return;
+  }
+
+  container.innerHTML =
+    '<p class="code-comment">// loading README...</p>';
+
+  try {
+    const markdown = await fetchRawReadme(repo);
+    const html = await renderReadme(markdown, repo);
+    container.innerHTML = html;
+    postProcessReadme(container, repo);
+
+    try {
+      localStorage.setItem(
+        cacheKey,
+        JSON.stringify({ html, fetchedAt: Date.now() })
+      );
+    } catch {}
+  } catch {
+    container.innerHTML =
+      '<p class="code-comment">// failed to load README</p>';
+  }
+}
+
+async function fetchRawReadme(repo) {
+  // El endpoint oficial devuelve el README (cualquier nombre/rama) como texto
+  const apiUrl = `https://api.github.com/repos/${repo}/readme`;
+  const apiRes = await fetch(apiUrl, {
+    headers: { Accept: "application/vnd.github.raw+json" },
+  });
+  if (!apiRes.ok) throw new Error("README fetch failed");
+  return apiRes.text();
+}
+
+async function renderReadme(markdown, repo) {
+  // Opción 1: renderizado exacto de GitHub (mismo preview que github.com)
+  if (typeof marked === "undefined") {
+    return fallbackRender(markdown);
+  }
+  try {
+    const res = await fetch("https://api.github.com/markdown", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/vnd.github+json",
+      },
+      body: JSON.stringify({
+        text: markdown,
+        mode: "gfm",
+        context: repo,
+      }),
+    });
+    if (res.ok) return await res.text();
+  } catch {}
+  // Opción 2 (sin red / rate limit): render local con marked
+  return fallbackRender(markdown);
+}
+
+function fallbackRender(markdown) {
+  if (typeof marked === "undefined") return "<p>markdown parser unavailable</p>";
+  configureMarkedRenderer();
+  return marked.parse(markdown, { gfm: true, breaks: true });
+}
+
+let markedRendererConfigured = false;
+
+function configureMarkedRenderer() {
+  if (markedRendererConfigured) return;
+  markedRendererConfigured = true;
+  marked.use({
+    renderer: {
+      heading({ tokens, depth }) {
+        const text = tokens
+          .map((t) => t.text || t.raw || t)
+          .join("")
+          .replace(/<[^>]*>/g, "");
+        const id = slugify(text);
+        return (
+          '<h' +
+          depth +
+          ' id="' +
+          id +
+          '">' +
+          this.parser.parseInline(tokens) +
+          "</h" +
+          depth +
+          ">"
+        );
+      },
+    },
+  });
+}
+
+function slugify(text) {
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\s+/g, "-");
+}
+
+function postProcessReadme(container, repo, branch = "main") {
+  const repoUrl = `https://github.com/${repo}/blob/${branch}`;
+  const rawUrl = `https://raw.githubusercontent.com/${repo}/${branch}`;
+
+  container.querySelectorAll("a").forEach((link) => {
+    const href = link.getAttribute("href");
+    if (!href) return;
+    // Enlaces internos del propio README: apuntan a los ids de GitHub
+    if (href.startsWith("#")) {
+      link.href = "#user-content-" + href.slice(1);
+      return;
+    }
+    if (/^(https?:)?\/\//i.test(href) || href.startsWith("mailto:")) {
+      if (!/^(https?:)?\/\//i.test(href)) return;
+      const host = new URL(href, location.origin).hostname;
+      if (host !== location.hostname) {
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+      }
+      return;
+    }
+    link.href = repoUrl + "/" + href.replace(/^\.?\//, "");
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+  });
+
+  container.querySelectorAll("img").forEach((img) => {
+    const src = img.getAttribute("src");
+    if (!src || /^(https?:)?\/\//i.test(src) || src.startsWith("data:")) return;
+    img.src = rawUrl + "/" + src.replace(/^\.?\//, "");
+    img.loading = "lazy";
+  });
+
+  enhanceReadmeAlerts(container);
+}
+
+function enhanceReadmeAlerts(container) {
+  container.querySelectorAll("blockquote").forEach((blockquote) => {
+    const firstP = blockquote.querySelector("p");
+    if (!firstP) return;
+    const match = firstP.textContent.match(
+      /^\s*\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/i
+    );
+    if (!match) return;
+    const type = match[1].toLowerCase();
+    blockquote.classList.add("markdown-alert", `markdown-alert-${type}`);
+    const title = document.createElement("p");
+    title.className = "markdown-alert-title";
+    title.textContent = match[1][0] + match[1].slice(1).toLowerCase();
+    firstP.innerHTML = firstP.innerHTML.replace(
+      /^\s*\[!(?:NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\s*/i,
+      ""
+    );
+    blockquote.insertBefore(title, blockquote.firstChild);
+  });
 }
 
 function initProjectLinks() {

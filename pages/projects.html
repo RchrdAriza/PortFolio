@@ -809,60 +809,12 @@
               </div>
 
               <!-- NvimOnMy_way Readme Panel -->
-              <div class="code-content-panel" id="nvim-readme-panel">
-                <p><span class="code-comment">/**</span></p>
-                <p><span class="code-comment"> * @file README.md</span></p>
-                <p>
-                  <span class="code-comment"> * @project NvimOnMy_way</span>
-                </p>
-                <p>
-                  <span class="code-comment">
-                    * @description A custom Neovim configuration with ~50
-                    plugins.</span
-                  >
-                </p>
-                <p><span class="code-comment"> */</span></p>
-                <p></p>
-                <p><span class="code-keyword">const</span> config = {</p>
-                <p>name: <span class="code-string">"NvimOnMy_way"</span>,</p>
-                <p>type: <span class="code-string">"Neovim Config"</span>,</p>
-                <p>language: <span class="code-string">"Lua"</span>,</p>
-                <p>requirements: [</p>
-                <p><span class="code-string">"Python & pip"</span>,</p>
-                <p><span class="code-string">"Neovim >= 0.12.0"</span>,</p>
-                <p><span class="code-string">"nerdfonts"</span>,</p>
-                <p>
-                  <span class="code-string">"NodeJS & tree-sitter-cli"</span>
-                </p>
-                <p>],</p>
-                <p>
-                  installation:
-                  <span class="code-string"
-                    >"git clone https://github.com/RchrdAriza/NvimOnMy_way
-                    ~/.config/nvim"</span
-                  >,
-                </p>
-                <p>keymaps: {</p>
-                <p>leader: <span class="code-string">"Space"</span></p>
-                <p>},</p>
-                <p>plugins: [</p>
-                <p>
-                  <span class="code-string">"lazy.nvim (Package Manager)"</span
-                  >,
-                </p>
-                <p>
-                  <span class="code-string">"neo-tree (File Explorer)"</span>,
-                </p>
-                <p>
-                  <span class="code-string">"nvim-lspconfig & mason (LSP)"</span
-                  >,
-                </p>
-                <p><span class="code-string">"nvim-cmp (Completion)"</span>,</p>
-                <p>
-                  <span class="code-string">"Tokyo-night (Colorscheme)"</span>
-                </p>
-                <p>]</p>
-                <p>};</p>
+              <div class="code-content-panel markdown-panel" id="nvim-readme-panel">
+                <div
+                  class="markdown-body"
+                  data-repo="RchrdAriza/NvimOnMy_way"
+                  data-branch="main"
+                ></div>
               </div>
 
               <!-- moto-g15-custom-kernel-lamu Readme Panel -->
@@ -1158,6 +1110,7 @@
       <div class="footer-right">@RchrdAriza</div>
     </footer>
 
+    <script src="../js/marked.min.js"></script>
     <script src="../js/app.js"></script>
     <!-- Vercel Web Analytics -->
     <script>
