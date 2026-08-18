@@ -81,18 +81,202 @@ function initSidebarContentSwitcher() {
     item.addEventListener("click", () => {
       const targetId = item.getAttribute("data-target");
       const targetPanel = targetId && document.getElementById(targetId);
-
       if (!targetPanel) return;
-
-      fileItems.forEach((file) => file.classList.remove("active"));
-      contentPanels.forEach((panel) => panel.classList.remove("active"));
-
-      item.classList.add("active");
-      targetPanel.classList.add("active");
-      loadReadmeIfNeeded(targetPanel);
-      updateLineNumbers();
+      switchToPanel(targetId);
     });
   });
+}
+
+// ── IDE-style editor tabs ─────────────────────────────────────
+let editorTabsBar = null;
+let primaryTabId = null;
+
+function initEditorTabs() {
+  const page = document.querySelector(".about-page, .projects-page");
+  if (!page || editorTabsBar) return;
+  const mainColumn = page.querySelector(".main-column");
+  if (!mainColumn) return;
+
+  const wrap = document.createElement("div");
+  wrap.className = "main-column-body";
+  while (mainColumn.firstChild) wrap.appendChild(mainColumn.firstChild);
+  mainColumn.appendChild(wrap);
+
+  const bar = document.createElement("div");
+  bar.className = "editor-tabs";
+  bar.setAttribute("role", "tablist");
+  bar.setAttribute("aria-label", "open files");
+  mainColumn.insertBefore(bar, wrap);
+  editorTabsBar = bar;
+
+  bar.addEventListener("dragover", (event) => {
+    event.preventDefault();
+    const dragging = bar.querySelector(".editor-tab.dragging");
+    if (!dragging) return;
+    const after = getDragAfterElement(bar, event.clientX);
+    if (after == null) {
+      bar.appendChild(dragging);
+    } else {
+      bar.insertBefore(dragging, after);
+    }
+  });
+
+  const primaryItem = page.querySelector(
+    ".sidebar .sidebar-item.final-item.active"
+  );
+  primaryTabId = primaryItem
+    ? primaryItem.getAttribute("data-target")
+    : page.classList.contains("projects-page")
+      ? "projects-grid-panel"
+      : null;
+
+  if (primaryTabId) openTab(primaryTabId);
+}
+
+function getDragAfterElement(container, x) {
+  const els = Array.from(
+    container.querySelectorAll(".editor-tab:not(.dragging)")
+  );
+  return els.reduce(
+    (closest, child) => {
+      const box = child.getBoundingClientRect();
+      const offset = x - box.left - box.width / 2;
+      if (offset < 0 && offset > closest.offset) {
+        return { offset, element: child };
+      }
+      return closest;
+    },
+    { offset: Number.NEGATIVE_INFINITY }
+  ).element;
+}
+
+function getFolderNameForItem(item) {
+  const parentItems = item.closest(".sidebar-items");
+  if (!parentItems) return null;
+  const folderHeader = parentItems.previousElementSibling;
+  if (folderHeader && folderHeader.classList.contains("nested-header")) {
+    const span = folderHeader.querySelector("span:not(.icon)");
+    return span ? span.textContent.trim() : null;
+  }
+  return null;
+}
+
+function findSidebarItem(targetId) {
+  return document.querySelector(
+    `.sidebar .sidebar-item.final-item[data-target="${targetId}"]`
+  );
+}
+
+function createTabElement(targetId, item) {
+  const tab = document.createElement("div");
+  tab.className = "editor-tab";
+  tab.dataset.target = targetId;
+  tab.draggable = true;
+  tab.setAttribute("role", "tab");
+
+  const icon = item.querySelector(".file-icon");
+  if (icon) tab.appendChild(icon.cloneNode(true));
+
+  const label = document.createElement("span");
+  label.className = "tab-label";
+  const textSpan = item.querySelector("span:not(.icon):not(.file-icon)");
+  const itemText = textSpan ? textSpan.textContent.trim() : targetId;
+  const folderName = getFolderNameForItem(item);
+  if (folderName && itemText === "README.md") {
+    label.textContent = folderName;
+    tab.title = `${folderName}/README.md`;
+  } else {
+    label.textContent = itemText;
+    if (folderName && folderName !== itemText) {
+      tab.title = `${folderName}/${itemText}`;
+    }
+  }
+  tab.appendChild(label);
+
+  const close = document.createElement("button");
+  close.type = "button";
+  close.className = "tab-close";
+  close.setAttribute("aria-label", "close tab");
+  close.textContent = "×";
+  tab.appendChild(close);
+
+  return tab;
+}
+
+function openTab(targetId) {
+  if (!editorTabsBar) return;
+  const item = findSidebarItem(targetId);
+  let tab = editorTabsBar.querySelector(
+    `.editor-tab[data-target="${targetId}"]`
+  );
+  if (!tab && item) {
+    tab = createTabElement(targetId, item);
+    editorTabsBar.appendChild(tab);
+
+    tab.addEventListener("click", () => {
+      switchToPanel(tab.dataset.target);
+    });
+
+    tab.addEventListener("dragstart", (event) => {
+      event.dataTransfer.setData("text/plain", tab.dataset.target);
+      tab.classList.add("dragging");
+      event.dataTransfer.effectAllowed = "move";
+    });
+
+    tab.addEventListener("dragend", () => {
+      tab.classList.remove("dragging");
+    });
+
+    tab.querySelector(".tab-close").addEventListener("click", (event) => {
+      event.stopPropagation();
+      closeTab(tab.dataset.target);
+    });
+  }
+  editorTabsBar
+    .querySelectorAll(".editor-tab")
+    .forEach((t) => t.classList.toggle("active", t.dataset.target === targetId));
+}
+
+function closeTab(targetId) {
+  if (!editorTabsBar) return;
+  const tab = editorTabsBar.querySelector(
+    `.editor-tab[data-target="${targetId}"]`
+  );
+  if (!tab) return;
+  const wasActive = tab.classList.contains("active");
+  tab.remove();
+  if (wasActive) {
+    const remaining = editorTabsBar.querySelector(".editor-tab");
+    if (remaining) {
+      switchToPanel(remaining.dataset.target);
+    } else if (primaryTabId) {
+      switchToPanel(primaryTabId);
+    }
+  }
+}
+
+function switchToPanel(targetId) {
+  const targetPanel = document.getElementById(targetId);
+  if (!targetPanel) return;
+
+  document
+    .querySelectorAll(".code-content-panel")
+    .forEach((panel) => panel.classList.remove("active"));
+  targetPanel.classList.add("active");
+
+  document
+    .querySelectorAll(".sidebar .sidebar-item.final-item")
+    .forEach((item) => {
+      item.classList.toggle(
+        "active",
+        item.getAttribute("data-target") === targetId
+      );
+    });
+
+  loadReadmeIfNeeded(targetPanel);
+  updateLineNumbers();
+
+  if (editorTabsBar) openTab(targetId);
 }
 
 function initProjectCards() {
@@ -576,25 +760,7 @@ function initProjectLinks() {
 
 function initBackToProjects() {
   window.addEventListener("popstate", () => {
-    const gridPanel = document.getElementById("projects-grid-panel");
-    if (!gridPanel) return;
-
-    const contentPanels = document.querySelectorAll(".code-content-panel");
-    const fileItems = document.querySelectorAll(
-      ".sidebar .sidebar-item.final-item"
-    );
-
-    contentPanels.forEach((panel) => panel.classList.remove("active"));
-    gridPanel.classList.add("active");
-
-    fileItems.forEach((item) => {
-      item.classList.remove("active");
-      if (item.getAttribute("data-target") === "projects-grid-panel") {
-        item.classList.add("active");
-      }
-    });
-
-    updateLineNumbers();
+    switchToPanel("projects-grid-panel");
   });
 }
 
@@ -686,6 +852,14 @@ function initMobileIDESidebar(pageSelector) {
     if (!mq.matches) return;
     if (sidebar.contains(event.target)) return;
     closeAll();
+  });
+
+  // Al elegir un archivo en móvil, cerrar el panel automáticamente
+  sidebar.addEventListener("click", (event) => {
+    if (!mq.matches) return;
+    if (event.target.closest(".sidebar-item.final-item")) {
+      closeAll();
+    }
   });
 }
 
@@ -781,6 +955,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const footerElement = document.querySelector("footer");
   const mainElement = document.querySelector("main"); // El <main> que contiene tus .page-content
 
+  initEditorTabs();
   initSidebarContentSwitcher();
   initMobileAboutSidebar();
   initMobileProjectsSidebar();
