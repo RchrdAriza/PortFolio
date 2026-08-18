@@ -393,6 +393,17 @@ function postProcessReadme(container, repo, branch = "main") {
   enhanceReadmeAlerts(container);
 }
 
+const alertIcons = {
+  note: '<circle cx="12" cy="12" r="10" /><path d="M12 16v-4" /><path d="M12 8h.01" />',
+  tip: '<path d="M9 18h6" /><path d="M10 22h4" /><path d="M12 2a7 7 0 0 1 4.9 11.9c-.8.7-1.1 1.6-1.1 2.1H8.2c0-.5-.3-1.4-1.1-2.1A7 7 0 0 1 12 2z" />',
+  important:
+    '<rect x="3" y="3" width="18" height="18" rx="2" /><path d="M12 8v4" /><path d="M12 16h.01" />',
+  warning:
+    '<path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" /><path d="M12 9v4" /><path d="M12 17h.01" />',
+  caution:
+    '<path d="M7.86 2h8.28L22 7.86v8.28L16.14 22H7.86L2 16.14V7.86z" /><path d="M12 8v4" /><path d="M12 16h.01" />',
+};
+
 function enhanceReadmeAlerts(container) {
   container.querySelectorAll("blockquote").forEach((blockquote) => {
     const firstP = blockquote.querySelector("p");
@@ -405,7 +416,12 @@ function enhanceReadmeAlerts(container) {
     blockquote.classList.add("markdown-alert", `markdown-alert-${type}`);
     const title = document.createElement("p");
     title.className = "markdown-alert-title";
-    title.textContent = match[1][0] + match[1].slice(1).toLowerCase();
+    const svg =
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' +
+      (alertIcons[type] || "") +
+      "</svg>";
+    title.innerHTML =
+      svg + (match[1][0] + match[1].slice(1).toLowerCase());
     firstP.innerHTML = firstP.innerHTML.replace(
       /^\s*\[!(?:NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\s*/i,
       ""

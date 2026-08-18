@@ -1623,13 +1623,23 @@ footer.solid-background {
 /* GitHub-style alerts: [!NOTE], [!IMPORTANT], etc. */
 .markdown-body .markdown-alert {
   border-radius: 6px;
-  padding: 0 16px;
+  border: 1px solid rgba(240, 246, 252, 0.08);
+  padding: 14px 16px;
   margin-bottom: 16px;
 }
 
-.markdown-body .markdown-alert-title {
+.markdown-body .markdown-alert .markdown-alert-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-weight: 600;
-  margin-bottom: 0;
+  margin: 0 0 8px;
+}
+
+.markdown-body .markdown-alert-title svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
 }
 
 .markdown-body .markdown-alert-title code {
@@ -1637,7 +1647,11 @@ footer.solid-background {
 }
 
 .markdown-body .markdown-alert p {
-  margin-top: 4px;
+  margin: 0 0 4px;
+}
+
+.markdown-body .markdown-alert p:last-child {
+  margin-bottom: 0;
 }
 
 .markdown-alert-note {
