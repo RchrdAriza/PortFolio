@@ -184,6 +184,122 @@ function formatStars(count) {
 // Estado de carga por repo para evitar peticiones duplicadas
 const readmeLoadState = new Map();
 
+// Estado de vista (preview/raw) por contenedor de README
+const readmeViewState = new Map();
+
+function setReadmeContent(container, html, raw) {
+  const state = readmeViewState.get(container) || { raw: null, rendered: null };
+  state.raw = raw;
+  state.rendered = html;
+  readmeViewState.set(container, state);
+  container.classList.remove("raw-view");
+  container.innerHTML = html;
+
+  const panel = container.closest(".markdown-panel");
+  if (panel) {
+    const rawTab = panel.querySelector('.markdown-tab[data-view="raw"]');
+    if (rawTab) rawTab.disabled = raw == null;
+  }
+}
+
+function showReadmeView(container, view) {
+  const state = readmeViewState.get(container);
+  if (!state) return;
+
+  if (view === "raw") {
+    if (state.raw == null || container.classList.contains("raw-view")) return;
+    state.rendered = container.innerHTML;
+    container.innerHTML = "";
+    const lines = state.raw.split("\n");
+    lines.forEach((line, index) => {
+      const row = document.createElement("div");
+      row.className = "code-line";
+
+      const number = document.createElement("span");
+      number.className = "code-line-number";
+      number.textContent = index + 1;
+
+      const text = document.createElement("span");
+      text.className = "code-line-text";
+      const bracketRe = /\[[^\]\n]+\]/g;
+      if (bracketRe.test(line)) {
+        let match;
+        let lastIndex = 0;
+        bracketRe.lastIndex = 0;
+        while ((match = bracketRe.exec(line)) !== null) {
+          if (match.index > lastIndex) {
+            text.appendChild(
+              document.createTextNode(line.slice(lastIndex, match.index))
+            );
+          }
+          const bracket = document.createElement("span");
+          bracket.className = "bracket-text";
+          bracket.textContent = match[0];
+          text.appendChild(bracket);
+          lastIndex = match.index + match[0].length;
+        }
+        if (lastIndex < line.length) {
+          text.appendChild(document.createTextNode(line.slice(lastIndex)));
+        }
+      } else {
+        text.textContent = line;
+      }
+
+      row.append(number, text);
+      container.appendChild(row);
+    });
+    container.classList.add("raw-view");
+  } else {
+    if (!container.classList.contains("raw-view")) return;
+    container.classList.remove("raw-view");
+    container.innerHTML = state.rendered || "";
+  }
+}
+
+function initMarkdownTabs() {
+  const panels = document.querySelectorAll(".markdown-panel");
+  panels.forEach((panel) => {
+    const container = panel.querySelector(".markdown-body[data-repo]");
+    if (!container || panel.querySelector(".markdown-toolbar")) return;
+
+    const toolbar = document.createElement("div");
+    toolbar.className = "markdown-toolbar";
+    toolbar.setAttribute("role", "tablist");
+    toolbar.setAttribute("aria-label", "README view");
+
+    const previewTab = document.createElement("button");
+    previewTab.type = "button";
+    previewTab.className = "markdown-tab active";
+    previewTab.dataset.view = "preview";
+    previewTab.setAttribute("role", "tab");
+    previewTab.textContent = "preview";
+
+    const rawTab = document.createElement("button");
+    rawTab.type = "button";
+    rawTab.className = "markdown-tab";
+    rawTab.dataset.view = "raw";
+    rawTab.setAttribute("role", "tab");
+    rawTab.textContent = "raw";
+
+    toolbar.append(previewTab, rawTab);
+    panel.insertBefore(toolbar, container);
+
+    previewTab.addEventListener("click", () => {
+      toolbar
+        .querySelectorAll(".markdown-tab")
+        .forEach((tab) => tab.classList.toggle("active", tab === previewTab));
+      showReadmeView(container, "preview");
+    });
+
+    rawTab.addEventListener("click", () => {
+      toolbar
+        .querySelectorAll(".markdown-tab")
+        .forEach((tab) => tab.classList.toggle("active", tab === rawTab));
+      showReadmeView(container, "raw");
+    });
+  });
+}
+
 function loadReadmeIfNeeded(panel) {
   const container = panel.querySelector(".markdown-body[data-repo]");
   if (!container) return;
@@ -204,15 +320,23 @@ async function loadReadmeInto(container, repo, branch = "main") {
     }
   })();
 
-  // Cache de 12 horas para no golpear la API de GitHub
-  if (cached && Date.now() - cached.fetchedAt < 12 * 60 * 60 * 1000) {
-    container.innerHTML = cached.html;
+  // Cache de 12 horas para no golpear la API de GitHub.
+  // Los caches guardados antes de soportar la vista "raw" no tienen
+  // la propiedad raw: se ignoran y se vuelve a fetchear.
+  const cacheHasRaw = cached && "raw" in cached;
+  if (cacheHasRaw && Date.now() - cached.fetchedAt < 12 * 60 * 60 * 1000) {
+    setReadmeContent(container, cached.html, cached.raw);
     postProcessReadme(container, repo, branch);
+    const state = readmeViewState.get(container);
+    if (state) state.rendered = container.innerHTML;
     return;
   }
 
-  container.innerHTML =
-    '<p class="code-comment">// loading README...</p>';
+  setReadmeContent(
+    container,
+    '<p class="code-comment">// loading README...</p>',
+    null
+  );
 
   try {
     const markdown = await fetchRawReadme(repo);
@@ -220,18 +344,25 @@ async function loadReadmeInto(container, repo, branch = "main") {
       markdown === null
         ? renderReadmePlaceholder(repo)
         : await renderReadme(markdown, repo);
-    container.innerHTML = html;
-    if (markdown !== null) postProcessReadme(container, repo, branch);
+    setReadmeContent(container, html, markdown);
+    if (markdown !== null) {
+      postProcessReadme(container, repo, branch);
+      const state = readmeViewState.get(container);
+      if (state) state.rendered = container.innerHTML;
+    }
 
     try {
       localStorage.setItem(
         cacheKey,
-        JSON.stringify({ html, fetchedAt: Date.now() })
+        JSON.stringify({ html, raw: markdown, fetchedAt: Date.now() })
       );
     } catch {}
   } catch {
-    container.innerHTML =
-      '<p class="code-comment">// failed to load README</p>';
+    setReadmeContent(
+      container,
+      '<p class="code-comment">// failed to load README</p>',
+      null
+    );
   }
 }
 
@@ -656,6 +787,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initProjectCards();
   initProjectStars();
   initProjectLinks();
+  initMarkdownTabs();
   initBackToProjects();
   updateLineNumbers();
 

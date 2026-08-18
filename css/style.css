@@ -1782,3 +1782,55 @@ footer.solid-background {
   background: rgba(67, 217, 173, 0.22);
   color: var(--portfolio-accent);
 }
+
+/* ── README preview / raw tabs ─────────────────────────────── */
+.markdown-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--portfolio-border);
+  font-family: "Fira Code", "Courier New", monospace;
+}
+
+.markdown-tab {
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: var(--portfolio-muted);
+  font-family: inherit;
+  font-size: 0.8rem;
+  line-height: 1;
+  padding: 0.4rem 0.75rem;
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s, border-color 0.2s;
+}
+
+.markdown-tab:hover {
+  color: var(--portfolio-text);
+  background: rgba(67, 217, 173, 0.06);
+}
+
+.markdown-tab.active {
+  color: var(--portfolio-accent);
+  border-color: rgba(67, 217, 173, 0.35);
+  background: rgba(67, 217, 173, 0.08);
+}
+
+.markdown-tab:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.markdown-body.raw-view {
+  font-family: "Fira Code", "Courier New", monospace;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.markdown-body.raw-view .code-line-text {
+  color: var(--portfolio-muted);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
