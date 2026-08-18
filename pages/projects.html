@@ -818,270 +818,57 @@
               </div>
 
               <!-- moto-g15-custom-kernel-lamu Readme Panel -->
-              <div class="code-content-panel" id="lamu-readme-panel">
-                <p><span class="code-comment">/**</span></p>
-                <p><span class="code-comment"> * @file README.md</span></p>
-                <p>
-                  <span class="code-comment">
-                    * @project moto-g15-custom-kernel-lamu</span
-                  >
-                </p>
-                <p>
-                  <span class="code-comment">
-                    * @description Custom GKI kernel for Moto G15 (lamu)
-                    enabling DroidSpaces: native chroot, native Docker and
-                    better performance.</span
-                  >
-                </p>
-                <p><span class="code-comment"> */</span></p>
-                <p></p>
-                <p><span class="code-keyword">const</span> kernel = {</p>
-                <p>device: <span class="code-string">"Moto G15 (lamu)"</span>,</p>
-                <p>type: <span class="code-string">"Custom GKI Kernel"</span>,</p>
-                <p>
-                  base: <span class="code-string">"LineageOS 23.2 (kernel-6.6)"</span>,
-                </p>
-                <p>
-                  toolchain:
-                  <span class="code-string">"Clang / Bazel Kleaf"</span>,
-                </p>
-                <p>
-                  version:
-                  <span class="code-string"
-                    >"6.6.127-android15-8-g98e7be363fe2-dirty-4k"</span
-                  >,
-                </p>
-                <p>enables: [</p>
-                <p>
-                  <span class="code-string">"DroidSpaces native chroot"</span>,
-                </p>
-                <p><span class="code-string">"Native Docker"</span>,</p>
-                <p><span class="code-string">"Better performance"</span></p>
-                <p>],</p>
-                <p>gki_defconfig: [</p>
-                <p><span class="code-string">"CONFIG_SYSVIPC=y"</span>,</p>
-                <p><span class="code-string">"CONFIG_POSIX_MQUEUE=y"</span>,</p>
-                <p><span class="code-string">"CONFIG_IPC_NS=y"</span>,</p>
-                <p><span class="code-string">"CONFIG_PID_NS=y"</span>,</p>
-                <p><span class="code-string">"CONFIG_DEVTMPFS=y"</span>,</p>
-                <p>
-                  <span class="code-string"
-                    >"CONFIG_NETFILTER_XT_MATCH_ADDRTYPE=y"</span
-                  >
-                </p>
-                <p>],</p>
-                <p>
-                  flash:
-                  <span class="code-string"
-                    >"fastboot flash boot boot-lamu-custom.img"</span
-                  >
-                </p>
-                <p>};</p>
+              <div class="code-content-panel markdown-panel" id="lamu-readme-panel">
+                <div
+                  class="markdown-body"
+                  data-repo="RchrdAriza/moto-g15-custom-kernel-lamu"
+                  data-branch="main"
+                ></div>
               </div>
 
               <!-- curlmoon Readme Panel -->
-              <div class="code-content-panel" id="curlmoon-readme-panel">
-                <p><span class="code-comment">/**</span></p>
-                <p><span class="code-comment"> * @file README.md</span></p>
-                <p><span class="code-comment"> * @project curlmoon</span></p>
-                <p>
-                  <span class="code-comment">
-                    * @description A pocket-sized Postman for the terminal —
-                    built for Termux, but it runs anywhere Go does.</span
-                  >
-                </p>
-                <p><span class="code-comment"> */</span></p>
-                <p></p>
-                <p><span class="code-keyword">const</span> curlmoon = {</p>
-                <p>name: <span class="code-string">"curlmoon"</span>,</p>
-                <p>type: <span class="code-string">"TUI HTTP Client"</span>,</p>
-                <p>language: <span class="code-string">"Go"</span>,</p>
-                <p>binary: <span class="code-string">"single-binary"</span>,</p>
-                <p>features: [</p>
-                <p><span class="code-string">"Collections"</span>,</p>
-                <p><span class="code-string">"Environments"</span>,</p>
-                <p><span class="code-string">"Auth helpers"</span>,</p>
-                <p><span class="code-string">"Request history"</span>,</p>
-                <p>
-                  <span class="code-string">"{{variable}} substitution"</span>
-                </p>
-                <p>],</p>
-                <p>
-                  input:
-                  <span class="code-string"
-                    >"keyboard-driven, no mouse required"</span
-                  >,
-                </p>
-                <p>
-                  runs:
-                  <span class="code-string">"Termux & anywhere Go does"</span>
-                </p>
-                <p>};</p>
+              <div class="code-content-panel markdown-panel" id="curlmoon-readme-panel">
+                <div
+                  class="markdown-body"
+                  data-repo="RchrdAriza/curlmoon"
+                  data-branch="master"
+                ></div>
               </div>
 
               <!-- strudel-copilot Readme Panel -->
-              <div class="code-content-panel" id="strudel-readme-panel">
-                <p><span class="code-comment">/**</span></p>
-                <p><span class="code-comment"> * @file README.md</span></p>
-                <p>
-                  <span class="code-comment"> * @project strudel-copilot</span>
-                </p>
-                <p>
-                  <span class="code-comment">
-                    * @description An experiment to play and learn Strudel with
-                    Claude Code.</span
-                  >
-                </p>
-                <p><span class="code-comment"> */</span></p>
-                <p></p>
-                <p><span class="code-keyword">const</span> strudel = {</p>
-                <p>name: <span class="code-string">"strudel-copilot"</span>,</p>
-                <p>
-                  type:
-                  <span class="code-string">"Live Coding Environment"</span>,
-                </p>
-                <p>
-                  aim:
-                  <span class="code-string">"AI-driven music composition"</span
-                  >,
-                </p>
-                <p>
-                  size: <span class="code-string">"minimal, full-screen"</span>,
-                </p>
-                <p>stack: [</p>
-                <p><span class="code-string">"Strudel"</span>,</p>
-                <p><span class="code-string">"REST API"</span>,</p>
-                <p><span class="code-string">"JavaScript"</span></p>
-                <p>],</p>
-                <p>features: [</p>
-                <p>
-                  <span class="code-string"
-                    >"Compose music programmatically via API"</span
-                  >,
-                </p>
-                <p>
-                  <span class="code-string"
-                    >"Claude Code controls the music"</span
-                  >
-                </p>
-                <p>]</p>
-                <p>};</p>
+              <div class="code-content-panel markdown-panel" id="strudel-readme-panel">
+                <div
+                  class="markdown-body"
+                  data-repo="RchrdAriza/strudel-copilot"
+                  data-branch="main"
+                ></div>
               </div>
 
               <!-- RetroPod Readme Panel -->
-              <div class="code-content-panel" id="retropod-readme-panel">
-                <p><span class="code-comment">/**</span></p>
-                <p><span class="code-comment"> * @file README.md</span></p>
-                <p><span class="code-comment"> * @project RetroPod</span></p>
-                <p>
-                  <span class="code-comment">
-                    * @description A local music player app designed to capture
-                    the nostalgic essence of the iconic iPod Classic.</span
-                  >
-                </p>
-                <p><span class="code-comment"> */</span></p>
-                <p></p>
-                <p><span class="code-keyword">const</span> retropod = {</p>
-                <p>name: <span class="code-string">"RetroPod"</span>,</p>
-                <p>
-                  type: <span class="code-string">"Local Music Player"</span>,
-                </p>
-                <p>stack: [</p>
-                <p><span class="code-string">"Dart"</span>,</p>
-                <p><span class="code-string">"Flutter"</span></p>
-                <p>],</p>
-                <p>inspiration: [</p>
-                <p><span class="code-string">"iPod Classic"</span>,</p>
-                <p><span class="code-string">"Nostalgia"</span></p>
-                <p>],</p>
-                <p>
-                  audio: <span class="code-string">"local only, no cloud"</span>
-                </p>
-                <p>};</p>
+              <div class="code-content-panel markdown-panel" id="retropod-readme-panel">
+                <div
+                  class="markdown-body"
+                  data-repo="RchrdAriza/RetroPod"
+                  data-branch="master"
+                ></div>
               </div>
 
               <!-- retroPodweb Readme Panel -->
-              <div class="code-content-panel" id="retropodweb-readme-panel">
-                <p><span class="code-comment">/**</span></p>
-                <p><span class="code-comment"> * @file README.md</span></p>
-                <p><span class="code-comment"> * @project retroPodweb</span></p>
-                <p>
-                  <span class="code-comment">
-                    * @description The official RetroPod website — a nostalgic
-                    landing page for the iPod Classic-inspired music app.</span
-                  >
-                </p>
-                <p><span class="code-comment"> */</span></p>
-                <p></p>
-                <p><span class="code-keyword">const</span> retroPodweb = {</p>
-                <p>name: <span class="code-string">"retroPodweb"</span>,</p>
-                <p>type: <span class="code-string">"Landing Page"</span>,</p>
-                <p>stack: [</p>
-                <p><span class="code-string">"HTML"</span>,</p>
-                <p><span class="code-string">"CSS"</span>,</p>
-                <p><span class="code-string">"JavaScript"</span></p>
-                <p>],</p>
-                <p>theme: <span class="code-string">"Retrowave Y2K"</span>,</p>
-                <p>features: [</p>
-                <p><span class="code-string">"Sound landmarks"</span>,</p>
-                <p>
-                  <span class="code-string">"RetroPod app promo"</span>,
-                </p>
-                <p><span class="code-string">"Nostalgic aesthetics"</span></p>
-                <p>]</p>
-                <p>};</p>
+              <div class="code-content-panel markdown-panel" id="retropodweb-readme-panel">
+                <div
+                  class="markdown-body"
+                  data-repo="RchrdAriza/retroPodweb"
+                  data-branch="main"
+                ></div>
               </div>
 
               <!-- AsiSena Readme Panel -->
-              <div class="code-content-panel" id="asisena-readme-panel">
-                <p><span class="code-comment">/**</span></p>
-                <p><span class="code-comment"> * @file README.md</span></p>
-                <p><span class="code-comment"> * @project AsiSena</span></p>
-                <p>
-                  <span class="code-comment">
-                    * @description Educational and well-being environment
-                    manager for SENA Colombo Alemán.</span
-                  >
-                </p>
-                <p><span class="code-comment"> */</span></p>
-                <p></p>
-                <p><span class="code-keyword">const</span> asisena = {</p>
-                <p>name: <span class="code-string">"AsiSena"</span>,</p>
-                <p>
-                  type: <span class="code-string">"Educational Manager"</span>,
-                </p>
-                <p>stack: [</p>
-                <p><span class="code-string">"Dart"</span>,</p>
-                <p><span class="code-string">"Flutter"</span>,</p>
-                <p><span class="code-string">"fl_chart"</span>,</p>
-                <p><span class="code-string">"Ollama (gemma3:4b)"</span></p>
-                <p>],</p>
-                <p>roles: [</p>
-                <p><span class="code-string">"Administrative"</span>,</p>
-                <p><span class="code-string">"Instructor"</span>,</p>
-                <p><span class="code-string">"Apprentice"</span></p>
-                <p>],</p>
-                <p>features: [</p>
-                <p><span class="code-string">"Auth with 3 roles"</span>,</p>
-                <p>
-                  <span class="code-string">"Personalized role dashboards"</span
-                  >,
-                </p>
-                <p>
-                  <span class="code-string"
-                    >"Student health with charts"</span
-                  >,
-                </p>
-                <p><span class="code-string">"AI chatbot with Ollama"</span>,</p>
-                <p>
-                  <span class="code-string">"Institutional news"</span>,
-                </p>
-                <p><span class="code-string">"Editable profile"</span></p>
-                <p>],</p>
-                <p>
-                  responsive: <span class="code-string">"Web + Mobile"</span>
-                </p>
-                <p>};</p>
+              <div class="code-content-panel markdown-panel" id="asisena-readme-panel">
+                <div
+                  class="markdown-body"
+                  data-repo="RchrdAriza/AsiSena"
+                  data-branch="main"
+                ></div>
               </div>
             </div>
           </div>

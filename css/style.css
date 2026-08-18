@@ -1684,3 +1684,87 @@ footer.solid-background {
 .markdown-alert-caution .markdown-alert-title {
   color: #ff7b72;
 }
+
+/* ── README placeholder (no README on GitHub) ───────────────── */
+.markdown-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.75rem;
+  padding: 3.5rem 1.5rem;
+  border: 1px dashed var(--portfolio-border);
+  border-radius: 10px;
+  background: rgba(1, 22, 39, 0.4);
+  color: var(--portfolio-muted);
+}
+
+.markdown-placeholder .placeholder-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(67, 217, 173, 0.08);
+  color: var(--portfolio-accent);
+}
+
+.markdown-placeholder .placeholder-icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.markdown-placeholder .placeholder-title {
+  font-family: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Consolas,
+    monospace;
+  font-size: 1rem;
+  color: var(--portfolio-text);
+  margin: 0;
+}
+
+.markdown-placeholder .placeholder-desc {
+  margin: 0;
+  max-width: 340px;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.markdown-placeholder .placeholder-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+  margin-top: 0.4rem;
+}
+
+.markdown-placeholder .placeholder-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 6px;
+  border: 1px solid var(--portfolio-border);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--portfolio-muted);
+  font-size: 0.8rem;
+  text-decoration: none;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.markdown-placeholder .placeholder-btn:hover {
+  border-color: var(--portfolio-accent);
+  color: var(--portfolio-text);
+}
+
+.markdown-placeholder .placeholder-btn-primary {
+  border-color: var(--portfolio-accent);
+  background: rgba(67, 217, 173, 0.12);
+  color: var(--portfolio-accent);
+}
+
+.markdown-placeholder .placeholder-btn-primary:hover {
+  background: rgba(67, 217, 173, 0.22);
+  color: var(--portfolio-accent);
+}

@@ -188,13 +188,14 @@ function loadReadmeIfNeeded(panel) {
   const container = panel.querySelector(".markdown-body[data-repo]");
   if (!container) return;
   const repo = container.getAttribute("data-repo");
+  const branch = container.getAttribute("data-branch") || "main";
   if (!repo || readmeLoadState.get(repo)) return;
   readmeLoadState.set(repo, true);
-  loadReadmeInto(container, repo);
+  loadReadmeInto(container, repo, branch);
 }
 
-async function loadReadmeInto(container, repo) {
-  const cacheKey = `readme-${repo}`;
+async function loadReadmeInto(container, repo, branch = "main") {
+  const cacheKey = `readme-${repo}-${branch}`;
   const cached = (() => {
     try {
       return JSON.parse(localStorage.getItem(cacheKey));
@@ -206,7 +207,7 @@ async function loadReadmeInto(container, repo) {
   // Cache de 12 horas para no golpear la API de GitHub
   if (cached && Date.now() - cached.fetchedAt < 12 * 60 * 60 * 1000) {
     container.innerHTML = cached.html;
-    postProcessReadme(container, repo);
+    postProcessReadme(container, repo, branch);
     return;
   }
 
@@ -215,9 +216,12 @@ async function loadReadmeInto(container, repo) {
 
   try {
     const markdown = await fetchRawReadme(repo);
-    const html = await renderReadme(markdown, repo);
+    const html =
+      markdown === null
+        ? renderReadmePlaceholder(repo)
+        : await renderReadme(markdown, repo);
     container.innerHTML = html;
-    postProcessReadme(container, repo);
+    if (markdown !== null) postProcessReadme(container, repo, branch);
 
     try {
       localStorage.setItem(
@@ -237,8 +241,54 @@ async function fetchRawReadme(repo) {
   const apiRes = await fetch(apiUrl, {
     headers: { Accept: "application/vnd.github.raw+json" },
   });
+  if (apiRes.status === 404) return null;
   if (!apiRes.ok) throw new Error("README fetch failed");
   return apiRes.text();
+}
+
+function renderReadmePlaceholder(repo) {
+  const repoUrl = `https://github.com/${repo}`;
+  const createUrl = `https://github.com/${repo}/new/main?filename=README.md`;
+  return `
+    <div class="markdown-placeholder">
+      <div class="placeholder-icon">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+          <polyline points="14 2 14 8 20 8" />
+          <line x1="9" y1="13" x2="15" y2="13" />
+          <line x1="9" y1="17" x2="15" y2="17" />
+        </svg>
+      </div>
+      <p class="placeholder-title">README.md not found</p>
+      <p class="placeholder-desc">
+        This repository doesn't have a README on GitHub yet.
+      </p>
+      <div class="placeholder-actions">
+        <a
+          class="placeholder-btn"
+          href="${repoUrl}"
+          target="_blank"
+          rel="noopener noreferrer"
+          >view on github</a
+        >
+        <a
+          class="placeholder-btn placeholder-btn-primary"
+          href="${createUrl}"
+          target="_blank"
+          rel="noopener noreferrer"
+          >create README.md</a
+        >
+      </div>
+    </div>
+  `;
 }
 
 async function renderReadme(markdown, repo) {
