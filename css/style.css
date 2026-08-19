@@ -834,6 +834,13 @@ main {
   letter-spacing: 0.05em;
 }
 
+.project-links {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+  align-self: flex-start;
+}
+
 .project-link {
   display: inline-flex;
   align-items: center;
@@ -845,8 +852,6 @@ main {
   border: 1px solid var(--portfolio-border);
   border-radius: 4px;
   transition: all 0.2s;
-  align-self: flex-start;
-  margin-top: auto;
 }
 
 .project-link:hover {
